@@ -27,20 +27,20 @@ class RequestAPI: ObservableObject {
         
         URLSession.shared.dataTaskPublisher(for: url)
             .subscribe(on: DispatchQueue.global(qos: .background))
-            .map { $0.data } // Extract the data from the response
-            .decode(type: Results.self, decoder: JSONDecoder()) // Decode the data into the Results type
-            .map { $0.articles } // Extract the articles from the Results
-            .receive(on: DispatchQueue.main) // Receive the output on the main thread
-            .sink(receiveCompletion: { completion in
+            .map { $0.data } // map으로 데이터 추출
+            .decode(type: Results.self, decoder: JSONDecoder()) //  Results type으로 Decode
+            .map { $0.articles } // 받아온 Results에서 articles을 추출
+            .receive(on: DispatchQueue.main) // Receive를 메인으로
+            .sink(receiveCompletion: { completion in // 등록
                 switch completion {
                 case .finished:
                     break
                 case .failure(let error):
                     print(error.localizedDescription)
-                    self.posts = [] // Set the posts to an empty array if there is an error
+                    self.posts = [] // 오류가 있는 경우 post을 빈 배열로 설정
                 }
             }, receiveValue: { articles in
-                self.posts = articles // Update the posts with the received articles
+                self.posts = articles // 받아온 articles을 posts에 넣어줌
             })
             .store(in: &cancellables)
     }
