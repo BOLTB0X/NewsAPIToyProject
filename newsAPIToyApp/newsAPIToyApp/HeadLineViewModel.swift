@@ -11,7 +11,6 @@ import Combine
 // MARK: - HeadLine ViewModel
 class HeadLineViewModel: ObservableObject {
     @Published private(set) var cur = currentState()
-    
     private var subscriptions = Set<AnyCancellable>() // 메모리 날리기용
     
     // MARK: - 다음 목록들 불러오기 체크
@@ -19,7 +18,7 @@ class HeadLineViewModel: ObservableObject {
         guard cur.LoadNextPage else { return }
         
         // API HeadLine 매니저 호출
-        APIHeadLineManager.fetchData(page: cur.page)
+        APIHeadLineManager.shared.fetchData(page: cur.page)
         // sink로 subscriber와 publisher 연결
             .sink(receiveCompletion: onReceive, receiveValue: onReceive)
             .store(in: &subscriptions)
@@ -38,7 +37,7 @@ class HeadLineViewModel: ObservableObject {
     
     // value를 받아옴
     private func onReceive(_ batch: [Article]) {
-        cur.model += batch
+        cur.models += batch
         cur.page += 1
         cur.LoadNextPage = batch.count == APIHeadLineManager.pageSize ? true : false
     }

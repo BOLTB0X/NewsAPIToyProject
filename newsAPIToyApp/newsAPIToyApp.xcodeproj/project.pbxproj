@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BE88FDA02A122E11003192A6 /* HeadLineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE88FD9F2A122E11003192A6 /* HeadLineViewModel.swift */; };
+		BE88FDA22A122E57003192A6 /* listView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE88FDA12A122E57003192A6 /* listView.swift */; };
+		BE88FDA42A123240003192A6 /* Spinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE88FDA32A123240003192A6 /* Spinner.swift */; };
 		BEA67A762A0B65BD00581ADC /* newsAPIToyAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA67A752A0B65BD00581ADC /* newsAPIToyAppApp.swift */; };
 		BEA67A782A0B65BD00581ADC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA67A772A0B65BD00581ADC /* ContentView.swift */; };
 		BEA67A7A2A0B65C000581ADC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BEA67A792A0B65C000581ADC /* Assets.xcassets */; };
@@ -37,6 +40,9 @@
 /* Begin PBXFileReference section */
 		BE11E1EA2A0B93DD00A504C8 /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
 		BE11E1EB2A0B945A00A504C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		BE88FD9F2A122E11003192A6 /* HeadLineViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeadLineViewModel.swift; sourceTree = "<group>"; };
+		BE88FDA12A122E57003192A6 /* listView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = listView.swift; sourceTree = "<group>"; };
+		BE88FDA32A123240003192A6 /* Spinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spinner.swift; sourceTree = "<group>"; };
 		BEA67A722A0B65BD00581ADC /* newsAPIToyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = newsAPIToyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEA67A752A0B65BD00581ADC /* newsAPIToyAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newsAPIToyAppApp.swift; sourceTree = "<group>"; };
 		BEA67A772A0B65BD00581ADC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -100,8 +106,11 @@
 			children = (
 				BE11E1EB2A0B945A00A504C8 /* Info.plist */,
 				BE11E1EA2A0B93DD00A504C8 /* Secrets.xcconfig */,
+				BE88FD9F2A122E11003192A6 /* HeadLineViewModel.swift */,
 				BEA67A752A0B65BD00581ADC /* newsAPIToyAppApp.swift */,
 				BEA67A9F2A0B6B1E00581ADC /* Model+API.swift */,
+				BE88FDA12A122E57003192A6 /* listView.swift */,
+				BE88FDA32A123240003192A6 /* Spinner.swift */,
 				BEA67A772A0B65BD00581ADC /* ContentView.swift */,
 				BEA67A792A0B65C000581ADC /* Assets.xcassets */,
 				BEA67A7B2A0B65C000581ADC /* Preview Content */,
@@ -264,7 +273,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE88FDA02A122E11003192A6 /* HeadLineViewModel.swift in Sources */,
+				BE88FDA42A123240003192A6 /* Spinner.swift in Sources */,
 				BEA67A782A0B65BD00581ADC /* ContentView.swift in Sources */,
+				BE88FDA22A122E57003192A6 /* listView.swift in Sources */,
 				BEA67A762A0B65BD00581ADC /* newsAPIToyAppApp.swift in Sources */,
 				BEA67AA02A0B6B1E00581ADC /* Model+API.swift in Sources */,
 			);
