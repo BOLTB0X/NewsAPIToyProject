@@ -17,7 +17,8 @@
 		BEA67A912A0B65C100581ADC /* newsAPIToyAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA67A902A0B65C100581ADC /* newsAPIToyAppUITests.swift */; };
 		BEA67A932A0B65C100581ADC /* newsAPIToyAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA67A922A0B65C100581ADC /* newsAPIToyAppUITestsLaunchTests.swift */; };
 		BEA67AA02A0B6B1E00581ADC /* Model+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA67A9F2A0B6B1E00581ADC /* Model+API.swift */; };
-		BEB2F60D2A132E10002A0100 /* HeadLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB2F60C2A132E10002A0100 /* HeadLineView.swift */; };
+		BEB2F60D2A132E10002A0100 /* HeadLineListContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB2F60C2A132E10002A0100 /* HeadLineListContainer.swift */; };
+		BEB2F6102A135E62002A0100 /* headlineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB2F60F2A135E62002A0100 /* headlineCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,7 +54,8 @@
 		BEA67A902A0B65C100581ADC /* newsAPIToyAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newsAPIToyAppUITests.swift; sourceTree = "<group>"; };
 		BEA67A922A0B65C100581ADC /* newsAPIToyAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newsAPIToyAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		BEA67A9F2A0B6B1E00581ADC /* Model+API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Model+API.swift"; sourceTree = "<group>"; };
-		BEB2F60C2A132E10002A0100 /* HeadLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadLineView.swift; sourceTree = "<group>"; };
+		BEB2F60C2A132E10002A0100 /* HeadLineListContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadLineListContainer.swift; sourceTree = "<group>"; };
+		BEB2F60F2A135E62002A0100 /* headlineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = headlineCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,7 +147,8 @@
 			isa = PBXGroup;
 			children = (
 				BEA67A9F2A0B6B1E00581ADC /* Model+API.swift */,
-				BEB2F60C2A132E10002A0100 /* HeadLineView.swift */,
+				BEB2F60C2A132E10002A0100 /* HeadLineListContainer.swift */,
+				BEB2F60F2A135E62002A0100 /* headlineCell.swift */,
 				BE88FD9F2A122E11003192A6 /* HeadLineViewModel.swift */,
 			);
 			path = HeadLine;
@@ -283,8 +286,9 @@
 			files = (
 				BE88FDA02A122E11003192A6 /* HeadLineViewModel.swift in Sources */,
 				BE88FDA42A123240003192A6 /* Spinner.swift in Sources */,
-				BEB2F60D2A132E10002A0100 /* HeadLineView.swift in Sources */,
+				BEB2F60D2A132E10002A0100 /* HeadLineListContainer.swift in Sources */,
 				BEA67A782A0B65BD00581ADC /* ContentView.swift in Sources */,
+				BEB2F6102A135E62002A0100 /* headlineCell.swift in Sources */,
 				BEA67A762A0B65BD00581ADC /* newsAPIToyAppApp.swift in Sources */,
 				BEA67AA02A0B6B1E00581ADC /* Model+API.swift in Sources */,
 			);

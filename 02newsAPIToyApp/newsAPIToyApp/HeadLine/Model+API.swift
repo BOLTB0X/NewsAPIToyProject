@@ -30,15 +30,27 @@ struct Article: Codable, Hashable {
 }
 
 enum newsAPI {
-    static let country = "us"
-    static let pageSize = 10
-    static var page = 1
-    // MARK: - API KEY를 여기에 다 선언하지 않은 이유
-    // private을 선언할 수 없어서
-//    static var apiKey: String? {
-//        guard let apiKey = Bundle.main.object(forInfoDictionaryKey: "API_KEY") as? String else {
-//            fatalError("Info.plist안에 API_KEY가 연결이 안됨")
-//        }
-//        return apiKey
-//    }
+    static let pageSize:Int = 3
+    static var apiKey: String? {
+        guard let apiKey = Bundle.main.object(forInfoDictionaryKey: "API_KEY") as? String else {
+            fatalError("Info.plist안에 API_KEY가 연결이 안됨")
+        }
+        return apiKey
+    }
+    
+    // MARK: - fetchHeadLine(API 호출): 헤드라인 기사 가져오기
+    static func fetchHeadLine(country: String, page: Int) -> AnyPublisher<[Article], Error> {
+        guard let apiKey = apiKey else { fatalError("Info.plist안에 API_KEY가 연결이 안됨") }
+        
+        guard let url = URL(string: "https://newsapi.org/v2/top-headlines?country=\(country)&apiKey=\(apiKey)&pageSize=\(Self.pageSize)&page=\(page)") else { fatalError("Invalid URL") }
+        
+        return URLSession.shared
+            .dataTaskPublisher(for: url)
+            .subscribe(on: DispatchQueue.global(qos: .background))
+            .map { $0.data } // map으로 데이터 추출
+            .decode(type: APIResults.self, decoder: JSONDecoder()) //  Results type으로 Decode
+            .map { $0.articles } // 받아온 Results에서 articles을 추출
+            .receive(on: DispatchQueue.main) // Receive를 메인으로
+            .eraseToAnyPublisher()
+    }
 }
