@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HeadLineView: View {
-    @StateObject var headlines = HeadLineViewModel.shared
+    @ObservedObject var headlines = HeadLineViewModel.shared
     var body: some View {
         NavigationView{
             List{

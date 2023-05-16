@@ -33,4 +33,12 @@ enum newsAPI {
     static let country = "us"
     static let pageSize = 10
     static var page = 1
+    // MARK: - API KEY를 여기에 다 선언하지 않은 이유
+    // private을 선언할 수 없어서
+//    static var apiKey: String? {
+//        guard let apiKey = Bundle.main.object(forInfoDictionaryKey: "API_KEY") as? String else {
+//            fatalError("Info.plist안에 API_KEY가 연결이 안됨")
+//        }
+//        return apiKey
+//    }
 }
