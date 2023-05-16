@@ -8,37 +8,48 @@
 import SwiftUI
 import Combine
 
+
 // MARK: - HeadLine ViewModel
 class HeadLineViewModel: ObservableObject {
-    @Published private(set) var cur = currentState()
-    private var subscriptions = Set<AnyCancellable>() // 메모리 날리기용
+    // 싱글톤 적용
+    static let shared = HeadLineViewModel()
+    var cancellables = Set<AnyCancellable>() // 메모리 날리기 용
     
-    // MARK: - 다음 목록들 불러오기 체크
-    func isPossibleFetchNext() {
-        guard cur.LoadNextPage else { return }
+    @Published var headlinePosts = [Article]() // 연결
+    
+    private init() {
+        //fetchArticle()
+    }
+    // API Key
+    private let apiKey = Bundle.main.object(forInfoDictionaryKey: "API_KEY") as? String
+    
+    
+    // MARK: - Article API로 가져오는 메소드
+    func fetchArticle() {
+        guard let apiKey = apiKey else { return }
+        print("apiKey 확인: \(apiKey)")
+        guard let url = URL(string: "https://newsapi.org/v2/top-headlines?country=\(newsAPI.country)&apiKey=\(apiKey)&pageSize=\(newsAPI.pageSize)&page=\(newsAPI.page)") else { return }
         
-        // API HeadLine 매니저 호출
-        APIHeadLineManager.shared.fetchData(page: cur.page)
-        // sink로 subscriber와 publisher 연결
-            .sink(receiveCompletion: onReceive, receiveValue: onReceive)
-            .store(in: &subscriptions)
-    }
-    
-    // MARK: - onReceive
-    // 완료 = 받아오는 경우 성공, 실패를 나눔
-    private func onReceive(_ completion: Subscribers.Completion<Error>) {
-        switch completion {
-        case .finished:
-            break;
-        case .failure:
-            cur.LoadNextPage = false
-        }
-    }
-    
-    // value를 받아옴
-    private func onReceive(_ batch: [Article]) {
-        cur.models += batch
-        cur.page += 1
-        cur.LoadNextPage = batch.count == APIHeadLineManager.pageSize ? true : false
+        print("실행")
+        URLSession.shared.dataTaskPublisher(for: url)
+               .subscribe(on: DispatchQueue.global(qos: .background))
+               .map { $0.data } // map으로 데이터 추출
+               .decode(type: APIResults.self, decoder: JSONDecoder()) //  Results type으로 Decode
+               .map { $0.articles } // 받아온 Results에서 articles을 추출
+               .receive(on: DispatchQueue.main) // Receive를 메인으로
+               .sink(receiveCompletion: { completion in // 등록
+                   switch completion {
+                   case .finished:
+                       break
+                   case .failure(let error):
+                       print("failure: \(error.localizedDescription)")
+                       self.headlinePosts = [] // 오류가 있는 경우 post을 빈 배열로 설정
+                   }
+               }, receiveValue: { articles in
+                   self.headlinePosts = articles // 받아온 articles을 posts에 넣어줌
+                   print("api 확인: \(self.headlinePosts[0].title)")
+               })
+               .store(in: &cancellables)
+        print("종료")
     }
 }

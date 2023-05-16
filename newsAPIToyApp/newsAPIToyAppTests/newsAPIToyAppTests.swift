@@ -19,7 +19,7 @@ final class newsAPIToyAppTests: XCTestCase {
     }
     
     func testAPIKey() throws {
-        APIHeadLineManager.shared.fetchData(page: 1)
+        HeadLineViewModel.shared.fetchArticle()
     }
 
     func testExample() throws {

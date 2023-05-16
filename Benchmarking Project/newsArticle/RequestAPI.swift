@@ -23,7 +23,7 @@ class RequestAPI: ObservableObject {
     
     func fetchData() {
         guard let apiKey = apiKey else { return }
-        guard let url = URL(string: "https://newsapi.org/v2/top-headlines?country=kr&apiKey=\(apiKey)") else { return }
+        guard let url = URL(string: "https://newsapi.org/v2/top-headlines?country=us&apiKey=\(apiKey)&pageSize=5&page=1") else { return }
         
         URLSession.shared.dataTaskPublisher(for: url)
             .subscribe(on: DispatchQueue.global(qos: .background))
