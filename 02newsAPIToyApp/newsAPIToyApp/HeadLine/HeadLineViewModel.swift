@@ -25,7 +25,7 @@ class HeadLineViewModel: ObservableObject {
         guard state.canLoadNext else { return } // 호출 가능한지 체크
         
         // 만들어든 api메소드 호출
-        newsAPI.fetchHeadLine(country: "kr", page: state.page)
+        newsAPI.fetchHeadLine(country: "us", page: state.page)
             .sink(receiveCompletion: onReceive, receiveValue: onReceive)
             .store(in: &cancellables)
     }
@@ -40,7 +40,7 @@ class HeadLineViewModel: ObservableObject {
         }
     }
     
-    // receive 부분 
+    // receive 부분
     private func onReceive(_ arti: [Article]) {
         state.headlineArticle += arti
         state.page += 1

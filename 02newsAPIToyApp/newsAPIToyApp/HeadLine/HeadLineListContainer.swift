@@ -23,7 +23,7 @@ struct HeadLineList: View {
     let onScrolledAtBottom: () -> Void
     
     var body: some View {
-        List {
+        LazyVStack {
             ForEach(article, id: \.self) { arti in
                 headlineCell(headline: arti)
                     .onAppear {
