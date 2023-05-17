@@ -18,7 +18,7 @@ class HeadLineViewModel: ObservableObject {
     func fetchNewsHeadLine() async throws {
         guard let apiKey = newsAPI.apiKey else { throw fatalError("Info.plist안에 API_KEY가 연결이 안됨") }
         
-        guard let url = URL(string: "https://newsapi.org/v2/top-headlines?country=kr&apiKey=\(apiKey)") else {
+        guard let url = URL(string: "https://newsapi.org/v2/top-headlines?country=us&apiKey=\(apiKey)") else {
              throw fatalError("invalidURL")
          }
     

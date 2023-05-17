@@ -14,7 +14,9 @@ struct HeadLineView: View {
         NavigationView{
             List{
                 ForEach(headlineVM.items) { result in
-                    Text(result.title)
+                    NavigationLink(destination: HeadLineCellView(curNews: result)) {
+                        Text(result.title)
+                    }
                 }
             }.navigationTitle("뉴스 헤드라인")
         }.task {
