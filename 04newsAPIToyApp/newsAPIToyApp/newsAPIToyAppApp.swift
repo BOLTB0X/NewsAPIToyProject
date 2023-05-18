@@ -12,7 +12,6 @@ struct newsAPIToyAppApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(HeadLineViewModel())
         }
     }
 }

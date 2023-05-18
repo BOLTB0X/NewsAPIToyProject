@@ -9,27 +9,44 @@ import SwiftUI
 
 struct HeadLineCellView: View {
     let curNews: Article
+    @State private var showContent = false
     
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 10) {
-                AsyncImage(url: URL(string: curNews.urlToImage ?? "")) { image in
-                    image.resizable()
-                } placeholder: {
-                    ProgressView()
-                        .frame(width: 150)
+        VStack(alignment: .center, spacing: 5) {
+            // MARK: - 기사 제목, 저자, 발행일
+            VStack(alignment: .leading) {
+                Text(curNews.title)
+                    .font(.headline)
+                HStack(spacing: 5) {
+                    Text(curNews.author ?? "")
+                    Text(curNews.publishedAt)
+                    
                 }
-                .scaledToFit()
-                .frame(width: 300, height: 300)
-                .clipped()
-                .cornerRadius(10)
+                .font(.subheadline)
+                .foregroundColor(.secondary)
             }
+            
+            // MARK: - 이미지
+            AsyncImage(url: URL(string: curNews.urlToImage ?? "")) { image in
+                image.resizable()
+            } placeholder: {
+                ProgressView()
+                    .frame(width: 400)
+            }
+            .scaledToFit()
+            .frame(width: 400, height: 400)
+            .clipped()
+            .cornerRadius(10)
+            
+            // MARK: - 기사 내용
+            // 클릭 시 원본 링크로 이동
+            Link(destination: URL(string: curNews.url)!, label: {
+                Text(curNews.description ?? "" )
+                    .foregroundColor(.black)
+            })
+            Spacer()
         }
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
-//struct HeadLineCellView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        HeadLineCellView()
-//    }
-//}

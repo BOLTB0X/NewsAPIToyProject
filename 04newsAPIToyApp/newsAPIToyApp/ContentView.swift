@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject private var headlineVM = HeadLineViewModel()
-
     var body: some View {
-        HeadLineView()
-            .environmentObject(headlineVM)
+        ZStack {
+            
+        }
+//        HeadLineListContainer()
     }
 }
 
