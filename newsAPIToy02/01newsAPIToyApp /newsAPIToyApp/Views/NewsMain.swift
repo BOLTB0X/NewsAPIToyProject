@@ -12,11 +12,11 @@ struct NewsMain: View {
     
     var body: some View {
         NavigationView {
-            List {
-                // 이미지
-                Text("임시")
-            }
-            .navigationTitle("News")
+            VStack {
+                Banner()
+                    .padding(.horizontal)
+                Spacer()
+            }.navigationTitle("News")
         }
     }
 }

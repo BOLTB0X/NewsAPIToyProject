@@ -78,7 +78,7 @@ enum NetworkManager {
     // MARK: - RequestHeadLineURL
     // 요청할 URL을 반환하는 메소드
     // 파라미터 수정
-    static func RequestHeadLineURL(country: String? = nil, category: String? = nil, q:String? = nil) -> URLRequest? {
+    static func RequestHeadLineURL(country: String? = nil, category: String? = nil, q:String? = nil, pageSize:Int? = nil, page:Int? = nil) -> URLRequest? {
         guard let apiKey = NetworkManager.apiKey else {
             fatalError("API_KEY가 설정 X\n 번들 의심")
         }
@@ -102,6 +102,14 @@ enum NetworkManager {
         // q
         if let q = q {
             queryItems.append(URLQueryItem(name: "q", value: q))
+        }
+        
+        if let pageSize = pageSize {
+            queryItems.append(URLQueryItem(name: "pageSize", value: String(pageSize)))
+        }
+        
+        if let page = page {
+            queryItems.append(URLQueryItem(name: "page", value: String(page)))
         }
         
         // apiKey는 필수
