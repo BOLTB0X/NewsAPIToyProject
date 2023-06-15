@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+// MARK: - EverythingViewModel
+class EverythingViewModel: ObservableObject {
+    
+}

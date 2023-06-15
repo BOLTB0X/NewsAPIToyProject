@@ -8,8 +8,16 @@
 import SwiftUI
 
 struct NewsMain: View {
+    @ObservedObject var headlineVM = HeadLineViewModel()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            List {
+                // 이미지
+                Text("임시")
+            }
+            .navigationTitle("News")
+        }
     }
 }
 

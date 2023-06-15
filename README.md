@@ -1,9 +1,17 @@
 # NewsAPI ToyProject
 
-NewsAPI와 Combine을 활용하여 혼자서 노는 ToyProject
+[NewsAPI](https://newsapi.org)을 활용하여 혼자서 노는 ToyProject
 <br/>
 
-## 임시
+## TODO
+
+<img src="https://github.com/BOLTB0X/SwiftUI_Tutorials/blob/master/gif/landmark_1.gif?raw=true" width="200" height="500"/> <img src="https://i.esdrop.com/d/f/xJR8oet2qE/gGwcDi8t5S.gif" width="200" height="500"/>
+<br/>
+
+애플의 공식 SwiftUI 튜토리얼 [landMark](https://github.com/BOLTB0X/SwiftUI_Tutorials)의 Model를[NewsAPI](https://newsapi.org)으로 해보는 것
+<br/>
+
+## 01
 
 <img src="https://i.esdrop.com/d/f/xJR8oet2qE/O5tJWDp9CP.gif" width="200" height="500"/> <img src="https://i.esdrop.com/d/f/xJR8oet2qE/gGwcDi8t5S.gif" width="200" height="500"/>
 <br>
