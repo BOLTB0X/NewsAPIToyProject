@@ -26,7 +26,7 @@ enum NetworkManager {
     // MARK: - RequestEverythingURL
     // 요청할 URL을 반환하는 메소드
     // 파라미터 수정
-    static func RequestEverythingURL(q: String? = nil, from:String? = nil, to:String?, language:String? = nil ,sortBy: String? = nil) -> URLRequest? {
+    static func RequestEverythingURL(q: String, from:String? = nil, to:String? = nil, language:String? = nil ,sortBy: String? = nil) -> URLRequest? {
         guard let apiKey = NetworkManager.apiKey else {
             fatalError("API_KEY가 설정 X\n 번들 의심")
         }
@@ -36,12 +36,8 @@ enum NetworkManager {
         
         // 이제 파라미터 설정
         var queryItems: [URLQueryItem] = []
-        
-        // q
-        if let q = q {
-            queryItems.append(URLQueryItem(name: "q", value: q))
-        }
-        
+        queryItems.append(URLQueryItem(name: "q", value: q))
+
         // from
         if let from = from {
             queryItems.append(URLQueryItem(name: "from", value: from))

@@ -8,11 +8,28 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject private var headlineVM = HeadLineViewModel()
+    // 공식튜토리얼 스타일
+    @State private var selection: Tab = .NewsMain
+    
+    enum Tab {
+        case NewsMain
+        case BookMark
+    }
 
     var body: some View {
-        HeadLineView()
-            .environmentObject(headlineVM)
+        TabView(selection: $selection) {
+            NewsMain()
+                .tabItem {
+                    Label("NewsMain", systemImage: "newspaper")
+                }
+                .tag(Tab.NewsMain)
+            
+            BookMark()
+                .tabItem {
+                    Label("BookMark", systemImage: "bookmark")
+                }
+                .tag(Tab.BookMark)
+        }
     }
 }
 

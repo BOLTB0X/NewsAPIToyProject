@@ -15,7 +15,7 @@ struct APIResults: Codable {
 }
 
 // MARK: - Article
-struct Article: Codable, Identifiable {
+struct Article: Codable, Identifiable, Hashable{
     let id: UUID = UUID()
     let author: String?
     let title: String
