@@ -22,6 +22,8 @@
 		BEA67A912A0B65C100581ADC /* newsAPIToyAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA67A902A0B65C100581ADC /* newsAPIToyAppUITests.swift */; };
 		BEA67A932A0B65C100581ADC /* newsAPIToyAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA67A922A0B65C100581ADC /* newsAPIToyAppUITestsLaunchTests.swift */; };
 		BEA67AA02A0B6B1E00581ADC /* NewsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA67A9F2A0B6B1E00581ADC /* NewsAPI.swift */; };
+		BEA7A3BA2A3EBFDB00DA1804 /* NewsDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA7A3B92A3EBFDB00DA1804 /* NewsDetail.swift */; };
+		BEA7A3BC2A3EC6CE00DA1804 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA7A3BB2A3EC6CE00DA1804 /* WebView.swift */; };
 		BEAC7DC32A3A9A7600717F47 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAC7DC22A3A9A7600717F47 /* Network.swift */; };
 		BEAC7DC92A3AAB7000717F47 /* NewsMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAC7DC82A3AAB7000717F47 /* NewsMain.swift */; };
 		BEAC7DCB2A3AACE500717F47 /* EverythingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAC7DCA2A3AACE500717F47 /* EverythingViewModel.swift */; };
@@ -66,6 +68,8 @@
 		BEA67A902A0B65C100581ADC /* newsAPIToyAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newsAPIToyAppUITests.swift; sourceTree = "<group>"; };
 		BEA67A922A0B65C100581ADC /* newsAPIToyAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newsAPIToyAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		BEA67A9F2A0B6B1E00581ADC /* NewsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAPI.swift; sourceTree = "<group>"; };
+		BEA7A3B92A3EBFDB00DA1804 /* NewsDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetail.swift; sourceTree = "<group>"; };
+		BEA7A3BB2A3EC6CE00DA1804 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		BEAC7DC22A3A9A7600717F47 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		BEAC7DC82A3AAB7000717F47 /* NewsMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsMain.swift; sourceTree = "<group>"; };
 		BEAC7DCA2A3AACE500717F47 /* EverythingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EverythingViewModel.swift; sourceTree = "<group>"; };
@@ -101,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				BEAC7DC82A3AAB7000717F47 /* NewsMain.swift */,
+				BEA7A3B92A3EBFDB00DA1804 /* NewsDetail.swift */,
 				BEAC7DCF2A3ACD6D00717F47 /* Banner.swift */,
 				BE40AE092A3BEDDC00581D53 /* CellImage.swift */,
 				BE6743EC2A3D58AA008227A3 /* RecommendRow.swift */,
@@ -189,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				BEA67A772A0B65BD00581ADC /* ContentView.swift */,
+				BEA7A3BB2A3EC6CE00DA1804 /* WebView.swift */,
 				BE6743F02A3D82C4008227A3 /* NewsMain */,
 				BE6743F12A3D830C008227A3 /* BookMark */,
 				BEB2F60E2A134B90002A0100 /* HeadLine */,
@@ -354,6 +360,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE88FDA02A122E11003192A6 /* HeadLineViewModel.swift in Sources */,
+				BEA7A3BC2A3EC6CE00DA1804 /* WebView.swift in Sources */,
 				BE9CBD872A14A15B00C5B33D /* HeadLineCellView.swift in Sources */,
 				BE9CBD852A147B8D00C5B33D /* HeadLineView.swift in Sources */,
 				BE40AE082A3BE3A000581D53 /* NewsMainViewModel.swift in Sources */,
@@ -361,6 +368,7 @@
 				BEAC7DD02A3ACD6D00717F47 /* Banner.swift in Sources */,
 				BEA67A782A0B65BD00581ADC /* ContentView.swift in Sources */,
 				BEA67A762A0B65BD00581ADC /* newsAPIToyAppApp.swift in Sources */,
+				BEA7A3BA2A3EBFDB00DA1804 /* NewsDetail.swift in Sources */,
 				BEAC7DC32A3A9A7600717F47 /* Network.swift in Sources */,
 				BEAC7DCB2A3AACE500717F47 /* EverythingViewModel.swift in Sources */,
 				BE40AE0A2A3BEDDC00581D53 /* CellImage.swift in Sources */,
