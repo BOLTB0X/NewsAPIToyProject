@@ -57,7 +57,7 @@ struct CellImage: View {
                 .frame(width: w, height: h)
             }
         }
-        .padding(.horizontal)
+        .padding(.horizontal, 5)
     }
 }
 
