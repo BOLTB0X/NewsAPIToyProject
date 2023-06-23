@@ -8,27 +8,11 @@
 import SwiftUI
 
 struct ContentView: View {
-    // 공식튜토리얼 스타일
-    @State private var selection: Tab = .NewsMain
+    @State var isLoading: Bool = true
     
-    enum Tab {
-        case NewsMain
-        case BookMark
-    }
-
     var body: some View {
-        TabView(selection: $selection) {
-            NewsMain()
-                .tabItem {
-                    Label("NewsMain", systemImage: "newspaper")
-                }
-                .tag(Tab.NewsMain)
-            
-            BookMark()
-                .tabItem {
-                    Label("BookMark", systemImage: "bookmark")
-                }
-                .tag(Tab.BookMark)
+        ZStack {
+            Main()
         }
     }
 }

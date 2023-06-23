@@ -11,8 +11,10 @@ import SwiftUI
 class HeadLineViewModel: ObservableObject {
     @Published var items: [Article] = [] // 뉴스기사들을 담을 배열
     @Published var currentPage: Int = 1 // 무한스크롤을 위한 현재 페이지
+    
     private let articlesPerPage: Int = 5
-    private var isLoading = false // 계속 불러올지 체크 변수
+    
+    @Published var isLoading = false // 계속 불러올지 체크 변수
     
     
     init() {

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct NewsMain: View {
     @ObservedObject var newsMainViewModel = NewsMainViewModel.shared
-
+    
     var body: some View {
         NavigationView {
             List {
@@ -25,6 +25,19 @@ struct NewsMain: View {
             }
             .listStyle(.inset)
             .navigationTitle("News")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    NavigationLink(destination: HeadLine()) {
+                        Image(systemName: "h.circle")
+                    }
+                }
+                
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    NavigationLink(destination: Everything()) {
+                        Image(systemName: "magnifyingglass")
+                    }
+                }
+            }
         }
     }
 }

@@ -20,7 +20,7 @@ final class newsAPIToyAppTests: XCTestCase {
     
     func testAPIKey() throws {
         let viewModel = HeadLineViewModel()
-        HeadLineView()
+        HeadLine()
             .environmentObject(viewModel)    }
 
     func testExample() throws {
