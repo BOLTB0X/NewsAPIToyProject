@@ -36,7 +36,7 @@
 
 ## **현재 진행률**
 
-![벤치마킹](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/gif/%EA%B3%B5%EC%8B%9D%ED%8A%9C%ED%86%A0%EB%A6%AC%EC%96%BC.gif?raw=true) ![newsapi](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/gif/%EB%89%B4%EC%8A%A402_01_%EC%9E%84%EC%8B%9C%EB%A9%94%EC%9D%B8.gif?raw=true)
+![현재 메인](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/gif/%EB%B3%80%EA%B2%BD%EB%A9%94%EC%9D%B83.gif?raw=true) ![헤드라인](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/gif/%ED%97%A4%EB%93%9C%EB%9D%BC%EC%9D%B8%20%EC%88%98%EC%A0%95%20%EA%B8%B0%EB%A1%9D2.gif?raw=true)
 
 - 상세 뷰 추가 (웝본보기 클릭시 WebView 이용)
   <br/>
