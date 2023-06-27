@@ -10,10 +10,10 @@ import Foundation
 // MARK: - EverythingViewModel
 class EverythingViewModel: ObservableObject {
     @Published var items: [Article] = [] // 뉴스기사들을 담을 배열
-    @Published var currentPage: Int = 1 // 무한스크롤을 위한 현재 페이지
+    // 검색 관련
+    @Published var searchHistory: [String] = [] // 검색 기록 배얄
     
     // main 에 넣을 프로퍼티
-    @Published var inputText:String = ""
     @Published var bitcoins: [Article] = []
     @Published var teslas: [Article] = []
     @Published var aespa: [Article] = []
@@ -26,10 +26,10 @@ class EverythingViewModel: ObservableObject {
 
     }
     
-    // MARK: - fetchNewsEverything
+    // MARK: - fetchNewsEverythingOnServer
     // headline 목록을 가져오는 메소드
-    func fetchNewsEverything() async throws {
-        guard let url = NetworkManager.RequestEverythingURL(q: inputText) else {
+    func fetchNewsEverythingOnServer(query: String) async throws {
+        guard let url = NetworkManager.RequestEverythingURL(q: query) else {
             throw NSError(domain: "Invalid URL", code: 0, userInfo: nil)
         }
         
@@ -43,35 +43,12 @@ class EverythingViewModel: ObservableObject {
             }
             let apiResult = try JSONDecoder().decode(APIResults.self, from: data)
             DispatchQueue.main.async {
-                if self.items.isEmpty {
+    
                     self.items = apiResult.articles
-                } else {
-                    self.items += apiResult.articles
-                }
-                self.currentPage += 1
+             
             }
         } catch {
             throw error
-        }
-    }
-    
-    // MARK: - loadMoreNewsEverything
-    // 계속 불러올지 체크용 메소드
-    func loadMoreNewsEverything(currentItem: Article?) {
-        guard !isLoading, let currentItem = currentItem, currentItem == items.last else {
-            return
-        }
-        
-        isLoading = true
-        
-        Task {
-            do {
-                try await fetchNewsEverything()
-            } catch {
-                print(error)
-            }
-            
-            isLoading = false
         }
     }
     

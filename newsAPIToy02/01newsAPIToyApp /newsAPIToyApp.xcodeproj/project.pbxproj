@@ -10,6 +10,14 @@
 		BE22C5892A4563DF00DED032 /* FavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE22C5882A4563DF00DED032 /* FavoriteButton.swift */; };
 		BE22C58D2A45660800DED032 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE22C58C2A45660800DED032 /* Main.swift */; };
 		BE22C58F2A456B5B00DED032 /* Everything.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE22C58E2A456B5B00DED032 /* Everything.swift */; };
+		BE29BD852A4AA41200620D72 /* CoreModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BE29BD832A4AA41200620D72 /* CoreModel.xcdatamodeld */; };
+		BE29BD8A2A4AA57B00620D72 /* Search+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE29BD862A4AA57B00620D72 /* Search+CoreDataClass.swift */; };
+		BE29BD8B2A4AA57B00620D72 /* Search+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE29BD872A4AA57B00620D72 /* Search+CoreDataProperties.swift */; };
+		BE29BD8C2A4AA57B00620D72 /* Favorite+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE29BD882A4AA57B00620D72 /* Favorite+CoreDataClass.swift */; };
+		BE29BD8D2A4AA57B00620D72 /* Favorite+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE29BD892A4AA57B00620D72 /* Favorite+CoreDataProperties.swift */; };
+		BE29BD912A4AA64500620D72 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE29BD902A4AA64500620D72 /* CoreDataManager.swift */; };
+		BE29BD942A4AABF800620D72 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE29BD932A4AABF800620D72 /* SearchBar.swift */; };
+		BE29BD962A4AB34900620D72 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE29BD952A4AB34900620D72 /* CardView.swift */; };
 		BE40AE082A3BE3A000581D53 /* NewsMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE40AE072A3BE3A000581D53 /* NewsMainViewModel.swift */; };
 		BE40AE0A2A3BEDDC00581D53 /* CellImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE40AE092A3BEDDC00581D53 /* CellImage.swift */; };
 		BE6743ED2A3D58AA008227A3 /* RecommendRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6743EC2A3D58AA008227A3 /* RecommendRow.swift */; };
@@ -56,6 +64,14 @@
 		BE22C5882A4563DF00DED032 /* FavoriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteButton.swift; sourceTree = "<group>"; };
 		BE22C58C2A45660800DED032 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 		BE22C58E2A456B5B00DED032 /* Everything.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Everything.swift; sourceTree = "<group>"; };
+		BE29BD842A4AA41200620D72 /* CoreModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreModel.xcdatamodel; sourceTree = "<group>"; };
+		BE29BD862A4AA57B00620D72 /* Search+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Search+CoreDataClass.swift"; sourceTree = "<group>"; };
+		BE29BD872A4AA57B00620D72 /* Search+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Search+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		BE29BD882A4AA57B00620D72 /* Favorite+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Favorite+CoreDataClass.swift"; sourceTree = "<group>"; };
+		BE29BD892A4AA57B00620D72 /* Favorite+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Favorite+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		BE29BD902A4AA64500620D72 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		BE29BD932A4AABF800620D72 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		BE29BD952A4AB34900620D72 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		BE40AE072A3BE3A000581D53 /* NewsMainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsMainViewModel.swift; sourceTree = "<group>"; };
 		BE40AE092A3BEDDC00581D53 /* CellImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellImage.swift; sourceTree = "<group>"; };
 		BE6743EC2A3D58AA008227A3 /* RecommendRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendRow.swift; sourceTree = "<group>"; };
@@ -114,6 +130,19 @@
 				BE22C5882A4563DF00DED032 /* FavoriteButton.swift */,
 			);
 			path = SubView;
+			sourceTree = "<group>";
+		};
+		BE29BD8F2A4AA5A000620D72 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				BE29BD902A4AA64500620D72 /* CoreDataManager.swift */,
+				BE29BD862A4AA57B00620D72 /* Search+CoreDataClass.swift */,
+				BE29BD872A4AA57B00620D72 /* Search+CoreDataProperties.swift */,
+				BE29BD882A4AA57B00620D72 /* Favorite+CoreDataClass.swift */,
+				BE29BD892A4AA57B00620D72 /* Favorite+CoreDataProperties.swift */,
+				BE29BD832A4AA41200620D72 /* CoreModel.xcdatamodeld */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 		BE6743F02A3D82C4008227A3 /* NewsMain */ = {
@@ -199,6 +228,7 @@
 		BEAC7DC12A3A98F600717F47 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				BE29BD8F2A4AA5A000620D72 /* CoreData */,
 				BEAC7DC22A3A9A7600717F47 /* Network.swift */,
 				BEA67A9F2A0B6B1E00581ADC /* NewsAPI.swift */,
 			);
@@ -233,6 +263,8 @@
 			isa = PBXGroup;
 			children = (
 				BE22C58E2A456B5B00DED032 /* Everything.swift */,
+				BE29BD932A4AABF800620D72 /* SearchBar.swift */,
+				BE29BD952A4AB34900620D72 /* CardView.swift */,
 			);
 			path = Everything;
 			sourceTree = "<group>";
@@ -376,9 +408,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE29BD852A4AA41200620D72 /* CoreModel.xcdatamodeld in Sources */,
+				BE29BD962A4AB34900620D72 /* CardView.swift in Sources */,
 				BE22C58D2A45660800DED032 /* Main.swift in Sources */,
 				BE88FDA02A122E11003192A6 /* HeadLineViewModel.swift in Sources */,
+				BE29BD8B2A4AA57B00620D72 /* Search+CoreDataProperties.swift in Sources */,
 				BEA7A3BC2A3EC6CE00DA1804 /* WebView.swift in Sources */,
+				BE29BD8D2A4AA57B00620D72 /* Favorite+CoreDataProperties.swift in Sources */,
 				BE9CBD872A14A15B00C5B33D /* HeadLineCell.swift in Sources */,
 				BE9CBD852A147B8D00C5B33D /* HeadLine.swift in Sources */,
 				BE40AE082A3BE3A000581D53 /* NewsMainViewModel.swift in Sources */,
@@ -386,14 +422,18 @@
 				BE22C58F2A456B5B00DED032 /* Everything.swift in Sources */,
 				BEAC7DD02A3ACD6D00717F47 /* Banner.swift in Sources */,
 				BEA67A782A0B65BD00581ADC /* ContentView.swift in Sources */,
+				BE29BD942A4AABF800620D72 /* SearchBar.swift in Sources */,
 				BEA67A762A0B65BD00581ADC /* newsAPIToyAppApp.swift in Sources */,
 				BEA7A3BA2A3EBFDB00DA1804 /* NewsDetail.swift in Sources */,
 				BEAC7DC32A3A9A7600717F47 /* Network.swift in Sources */,
 				BEAC7DCB2A3AACE500717F47 /* EverythingViewModel.swift in Sources */,
+				BE29BD8A2A4AA57B00620D72 /* Search+CoreDataClass.swift in Sources */,
+				BE29BD912A4AA64500620D72 /* CoreDataManager.swift in Sources */,
 				BE40AE0A2A3BEDDC00581D53 /* CellImage.swift in Sources */,
 				BE22C5892A4563DF00DED032 /* FavoriteButton.swift in Sources */,
 				BE6743EF2A3D82BA008227A3 /* BookMark.swift in Sources */,
 				BEA67AA02A0B6B1E00581ADC /* NewsAPI.swift in Sources */,
+				BE29BD8C2A4AA57B00620D72 /* Favorite+CoreDataClass.swift in Sources */,
 				BE6743ED2A3D58AA008227A3 /* RecommendRow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -715,6 +755,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		BE29BD832A4AA41200620D72 /* CoreModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				BE29BD842A4AA41200620D72 /* CoreModel.xcdatamodel */,
+			);
+			currentVersion = BE29BD842A4AA41200620D72 /* CoreModel.xcdatamodel */;
+			path = CoreModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = BEA67A6A2A0B65BD00581ADC /* Project object */;
 }
