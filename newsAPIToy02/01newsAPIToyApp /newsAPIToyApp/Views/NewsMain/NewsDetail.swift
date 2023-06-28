@@ -7,32 +7,36 @@
 
 import SwiftUI
 
-// TODO
+// MARK: - NewsDetail
+// 뉴스기사 상세 뷰
 struct NewsDetail: View {
-    let newsDetail :Article
-    @Binding var loading: Bool
-    
+    @EnvironmentObject var manager: BookMarkManager // 북마크
+    let articleDetail: Article // 뉴스 기사
+    @Binding var loading: Bool // 로딩
     
     var body: some View {
         VStack {
             // 상단 타이틀 및 정보
             HStack {
                 VStack(alignment: .leading) {
-                    Text(newsDetail.title)
+                    Text(articleDetail.title)
                         .font(.system(size: 25, weight: .bold))
-                    Text(newsDetail.author ?? "")
+                    Text(articleDetail.author ?? "")
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                     
                     HStack {
-                        Text(newsDetail.publishedAt)
+                        Text(articleDetail.publishedAt)
                             .font(.subheadline)
                             .foregroundColor(.secondary)
                         
                         Spacer()
                         
+                        FavoriteButton(item: articleDetail)
+                            .environmentObject(manager)
+                        
                         NavigationLink(
-                            destination: WebView(urlToLoad: newsDetail.url),
+                            destination: WebView(urlToLoad: articleDetail.url),
                             label: {
                                 Text("원본 보기")
                             })
@@ -44,9 +48,9 @@ struct NewsDetail: View {
             .padding(.horizontal)
             
             // 이미지
-            CellImage(item: newsDetail, w: 400, h: 300, isTitleDisplay: false, isLoading: $loading)
+            CellImage(item: articleDetail, w: 400, h: 300, isTitleDisplay: false, isLoading: $loading)
             
-            Text(newsDetail.content ?? "")
+            Text(articleDetail.content ?? "")
                 .padding(.horizontal)
             
             Spacer()
@@ -55,9 +59,14 @@ struct NewsDetail: View {
 }
 
 struct NewsDetail_Previews: PreviewProvider {
-    @State static var isLoading = false
+    static let bookMarkManager = BookMarkManager()
     
     static var previews: some View {
-        NewsDetail(newsDetail: Article.getDummy(), loading: $isLoading)
+        let article = Article.getDummy()
+        
+        bookMarkManager.items.append(article)
+        
+        return NewsDetail(articleDetail: article, loading: .constant(false))
+            .environmentObject(bookMarkManager)
     }
 }

@@ -9,7 +9,6 @@ import SwiftUI
 
 struct NewsMain: View {
     @ObservedObject var newsMainViewModel = NewsMainViewModel.shared
-    
     var body: some View {
         NavigationView {
             List {
@@ -17,11 +16,11 @@ struct NewsMain: View {
                     .padding(.horizontal)
                 
                 RecommendRow(title: "Hot issue", recom: newsMainViewModel.recom1, loading: $newsMainViewModel.loadingRecommend1)
-                
+               
                 RecommendRow(title: "Movie", recom: newsMainViewModel.recom2, loading: $newsMainViewModel.loadingRecommend2)
-                
-                
+
                 RecommendRow(title: "K-pop", recom: newsMainViewModel.recom3, loading: $newsMainViewModel.loadingRecommend3)
+               
             }
             .listStyle(.inset)
             .navigationTitle("News")

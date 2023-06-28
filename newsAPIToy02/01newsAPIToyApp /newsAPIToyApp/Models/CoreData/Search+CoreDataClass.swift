@@ -2,7 +2,7 @@
 //  Search+CoreDataClass.swift
 //  newsAPIToyApp
 //
-//  Created by KyungHeon Lee on 2023/06/27.
+//  Created by KyungHeon Lee on 2023/06/28.
 //
 //
 

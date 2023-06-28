@@ -24,7 +24,7 @@ struct RecommendRow: View {
                 HStack(alignment: .top, spacing: 0) {
                     ForEach(recom, id: \.self) { recom in
                         NavigationLink(
-                            destination: NewsDetail(newsDetail: recom, loading: $loading),
+                            destination: NewsDetail(articleDetail: recom, loading: $loading),
                             label: {
                                 CellImage(item: recom, w: 155, h: 155, isTitleDisplay: true, isLoading: $loading)
                             })

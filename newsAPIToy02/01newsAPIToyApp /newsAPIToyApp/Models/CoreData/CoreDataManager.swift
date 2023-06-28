@@ -68,7 +68,7 @@ class CoreDataManager {
     }
     
     // MARK: - saveFavorite
-    func saveFavorite(title: String, url: String, description: String?, author: String?, urlimg: String?, publi: String, conten: String?) {
+    func saveFavorite(title: String, url: String, description: String?, author: String?, urlimg: String?, publi: String?, conten: String?) {
         let context = favoriteContainer.viewContext
         
         // 중복 체크
@@ -98,6 +98,7 @@ class CoreDataManager {
         favorite.urlimg = urlimg
         favorite.publi = publi
         favorite.conten = conten
+        favorite.favorite = true
         
         do {
             try context.save()

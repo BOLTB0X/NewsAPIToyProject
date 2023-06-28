@@ -10,7 +10,8 @@ import SwiftUI
 struct Main: View {
     // 공식튜토리얼 스타일
     @State private var selection: Tab = .NewsMain
-    
+    // 북마크
+
     enum Tab {
         case NewsMain
         case BookMark

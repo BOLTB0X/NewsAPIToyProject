@@ -2,7 +2,7 @@
 //  Favorite+CoreDataProperties.swift
 //  newsAPIToyApp
 //
-//  Created by KyungHeon Lee on 2023/06/27.
+//  Created by KyungHeon Lee on 2023/06/28.
 //
 //
 
@@ -16,14 +16,15 @@ extension Favorite {
         return NSFetchRequest<Favorite>(entityName: "Favorite")
     }
 
-    @NSManaged public var id: UUID?
     @NSManaged public var author: String?
-    @NSManaged public var title: String?
+    @NSManaged public var conten: String?
     @NSManaged public var desc: String?
+    @NSManaged public var id: UUID?
+    @NSManaged public var publi: String?
+    @NSManaged public var title: String?
     @NSManaged public var url: String?
     @NSManaged public var urlimg: String?
-    @NSManaged public var publi: String?
-    @NSManaged public var conten: String?
+    @NSManaged public var favorite: Bool
 
 }
 
