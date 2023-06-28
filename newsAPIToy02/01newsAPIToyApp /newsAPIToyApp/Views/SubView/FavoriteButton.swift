@@ -8,17 +8,17 @@
 import SwiftUI
 
 struct FavoriteButton: View {
-    @EnvironmentObject var bookmarkManager: BookMarkManager
+    @EnvironmentObject var manager: BookMarkManager
     var item: Article
 
     var isSet: Bool {
-        bookmarkManager.isBookmarked(item)
+        manager.isBookmarked(item)
     }
     
     var body: some View {
         // 북마크
         Button {
-            bookmarkManager.toggleBookmark(item)
+            manager.toggleBookmark(item)
         } label: {
             // 이미지가 변수에 따라 달라지게
             Image(systemName: isSet ? "checkmark.rectangle.portrait.fill" : "checkmark.rectangle.portrait")
