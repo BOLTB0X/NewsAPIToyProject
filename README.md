@@ -36,8 +36,5 @@
 
 ## **현재 진행률**
 
-![현재 메인](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/gif/%EB%B3%80%EA%B2%BD%EB%A9%94%EC%9D%B83.gif?raw=true) ![헤드라인](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/gif/%ED%97%A4%EB%93%9C%EB%9D%BC%EC%9D%B8%20%EC%88%98%EC%A0%95%20%EA%B8%B0%EB%A1%9D2.gif?raw=true)
-<br/>
-
-![뉴스검색](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/gif/%EB%89%B4%EC%8A%A4%EA%B2%80%EC%83%89.gif?raw=true) ![북마크](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/gif/%EB%B6%81%EB%A7%88%ED%81%AC.gif?raw=true)
+![현재 메인](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/gif/main2.gif?raw=true) ![헤드라인](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/gif/%EA%B2%80%EC%83%89%20%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81.gif?raw=true)
 <br/>
