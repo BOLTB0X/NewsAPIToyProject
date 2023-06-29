@@ -9,11 +9,13 @@ import SwiftUI
 
 struct ContentView: View {
     @State var isLoading: Bool = true
+    // init이용을 위해
+    @StateObject var manager = BookMarkManager()
     
     var body: some View {
         ZStack {
             Main()
-                .environmentObject(BookMarkManager())
+            .environmentObject(manager)
         }
     }
 }

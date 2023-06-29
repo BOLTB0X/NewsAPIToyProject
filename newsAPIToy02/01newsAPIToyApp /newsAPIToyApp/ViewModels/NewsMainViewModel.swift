@@ -16,8 +16,8 @@ class NewsMainViewModel:ObservableObject {
     @Published var recom3: [Article] = []
     
     // 추천 검색어 api는 일단 random으로 대체
-    let radomArr1 = ["Bitcoin", "Covid", "Apple"]
-    let radomArr2 = ["shinkai makoto", "suzume", "oldboy", "spiderman"]
+    let radomArr1 = ["Bitcoin", "MMA", "Aespa"]
+    let radomArr2 = ["shinkai makoto", "across the spider verse", "oldboy", "spiderman"]
     let radomArr3 = ["LE SSERAFIM", "Newjeans", "Aespa", "IVE"] // entertainment
     var query: String
 

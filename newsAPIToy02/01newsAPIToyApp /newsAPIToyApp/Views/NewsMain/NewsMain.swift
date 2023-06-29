@@ -9,6 +9,7 @@ import SwiftUI
 
 struct NewsMain: View {
     @ObservedObject var newsMainViewModel = NewsMainViewModel.shared
+    
     var body: some View {
         NavigationView {
             List {
