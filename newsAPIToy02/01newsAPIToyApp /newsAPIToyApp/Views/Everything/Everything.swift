@@ -10,6 +10,7 @@ import SwiftUI
 struct Everything: View {
     @StateObject var everyViewModel = EverythingViewModel()
     @State private var inputText: String = ""
+    @State private var loading: Bool = false
     
     var body: some View {
         VStack {
@@ -26,12 +27,13 @@ struct Everything: View {
             })
             
             if !everyViewModel.items.isEmpty {
-                List { // ForEach로 담겨진 뉴스기사 배열을 깔끔히 처리를 위해 List를 사용
+                List {
                     ForEach(everyViewModel.items) { result in
-                        NavigationLink(destination: WebView(urlToLoad: result.url)) {
-                            Text(result.title)
-                        }
+                        NavigationLink(destination: NewsDetail(articleDetail: result, loading: $loading), label:  {
+                            EverythingCell(item: result)
+                        })
                     }
+                    .padding(5)
                 }
                 .listStyle(.grouped)
             } else {

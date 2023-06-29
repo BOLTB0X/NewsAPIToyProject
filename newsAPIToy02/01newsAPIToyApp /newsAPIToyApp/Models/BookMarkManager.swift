@@ -14,27 +14,9 @@ class BookMarkManager: ObservableObject {
     @Published var items: [Article] = []
     
     init() {
-        fetchFavoriteOnCore()
+        items.append(Article.getDummy())
+        items.append(Article.getDummy2())
     }
-    
-    // MARK: - fetchFavoriteOnCore
-    func fetchFavoriteOnCore() {
-        // 코어 데이터에서 Favorite을 가져와 items 배열에 추가
-        let context = CoreDataManager.shared.favoriteContainer.viewContext
-        let fetchRequest: NSFetchRequest<Favorite> = Favorite.fetchRequest()
-        
-        do {
-            let favorites = try context.fetch(fetchRequest)
-            let articles = favorites.compactMap { favorite in
-                // 각 Favorite 프로퍼티들을 Article로 변환
-                Article(author: favorite.author ?? "", title: favorite.title ?? "", description: favorite.description, url: favorite.url ?? "", urlToImage: favorite.urlimg ?? "", publishedAt: favorite.publi ?? "", content: favorite.conten ?? "", favorite: favorite.favorite)
-            }
-            items = articles
-        } catch {
-            print("Favorite 항목 가져오기 실패: \(error)")
-        }
-    }
-    
     
     // MARK: - fetchFavorite
     // Article에 해당하는 Favorite 엔티티를 가져오는 메소드

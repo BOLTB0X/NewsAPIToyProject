@@ -9,14 +9,14 @@ import SwiftUI
 
 struct BookMark: View {
     @EnvironmentObject var manager: BookMarkManager
-    @State private var loading: Bool = false
+    @State private var cellClick: Bool = false
     
     var body: some View {
         NavigationView {
             List { // ForEach로 담겨진 뉴스기사 배열을 깔끔히 처리를 위해 List를 사용
                 ForEach(manager.items) { result in
                     NavigationLink(
-                        destination: NewsDetail(articleDetail: result, loading: $loading),
+                        destination: NewsDetail(articleDetail: result, loading: $cellClick),
                         label: {
                             BookMarkCell(item: result)
                         }
@@ -24,7 +24,7 @@ struct BookMark: View {
                     .navigationTitle("BookMark")
                 }
             }.listStyle(.inset)
-        }
+        }.navigationTitle("BookMark")
     }
 }
 
