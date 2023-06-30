@@ -18,7 +18,7 @@ class NewsMainViewModel:ObservableObject {
     // 추천 검색어 api는 일단 random으로 대체
     let radomArr1 = ["Bitcoin", "MMA", "Aespa"]
     let radomArr2 = ["shinkai makoto", "across the spider verse", "oldboy", "spiderman"]
-    let radomArr3 = ["LE SSERAFIM", "Newjeans", "Aespa", "IVE"] // entertainment
+    let radomArr3 = ["Kpop BTS", "Kpop SM", "Aespa", "KPop"] // entertainment
     var query: String
 
     // 로딩 표현

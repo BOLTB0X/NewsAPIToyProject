@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct newsAPIToyAppApp: App {
+    @StateObject var manager = BookMarkManager()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(manager)
         }
     }
 }

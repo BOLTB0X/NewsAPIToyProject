@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State var isLoading: Bool = true
-    @StateObject var manager = BookMarkManager()
+    @EnvironmentObject var manager: BookMarkManager
     
     var body: some View {
         ZStack {
@@ -22,5 +22,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environmentObject(BookMarkManager())
     }
 }
