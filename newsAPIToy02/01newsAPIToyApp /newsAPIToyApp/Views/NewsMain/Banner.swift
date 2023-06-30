@@ -8,10 +8,9 @@
 import SwiftUI
 
 struct Banner: View {
-    @StateObject var BannerViewModel: NewsMainViewModel
+    @EnvironmentObject var BannerViewModel: NewsMainViewModel
     @State private var currentIndex: Int = 0
     @State private var loading: Bool = false
-    @State private var btnClick: Bool = false
     
     // 타이머 이용
     private let timer = Timer.publish(every: 2, on: .main, in: .common).autoconnect()
@@ -26,43 +25,42 @@ struct Banner: View {
                 LazyHStack(spacing: 0) {
                     ForEach(BannerViewModel.banners.indices, id: \.self) { i in
                         let banner = BannerViewModel.banners[currentIndex]
-                        NavigationLink(destination: NewsDetail(articleDetail: banner, loading: $loading), label: {
-                            ZStack {
-                                // 사진을 배경으로 설정
-                                AsyncImage(url: URL(string: banner.urlToImage ?? "")) { image in
-                                    image
-                                        .resizable()
-                                        .frame(width: w, height: h)
-                                        .aspectRatio(contentMode: .fit)
-                                        .cornerRadius(15)
-                                    
-                                } placeholder: {
-                                    Image(systemName: "photo")
-                                        .resizable()
-                                        .frame(width: w, height: h)
-                                        .aspectRatio(contentMode: .fit)
-                                        .cornerRadius(15)
-                                        .redacted(reason: .placeholder)
-                                }
-                                .padding(.horizontal)
+                        ZStack {
+                            // 사진을 배경으로 설정
+                            AsyncImage(url: URL(string: banner.urlToImage ?? "")) { image in
+                                image
+                                    .resizable()
+                                    .frame(width: w, height: h)
+                                    .aspectRatio(contentMode: .fit)
+                                    .cornerRadius(15)
                                 
-                                VStack(alignment: .leading, spacing: 0) {
-                                    Text("Current HeadLine")
-                                        .foregroundColor(.white)
-                                        .font(.system(size: 20, weight: .bold))
-                                    //                                    .padding(.horizontal)
-                                    
-                                    Spacer()
-                                    
-                                    Text("\(banner.title)")
-                                        .foregroundColor(.white)
-                                        .font(.system(size: 30, weight: .bold))
-                                        .lineLimit(2)
-                                }
-                                .padding(.horizontal)
+                            } placeholder: {
+                                Image(systemName: "photo")
+                                    .resizable()
+                                    .frame(width: w, height: h)
+                                    .aspectRatio(contentMode: .fit)
+                                    .cornerRadius(15)
+                                    .redacted(reason: .placeholder)
                             }
-                            .frame(width: w, height: h)
-                        })
+                            .padding(.horizontal)
+                            
+                            VStack(alignment: .leading, spacing: 0) {
+                                Text("Current HeadLine")
+                                    .foregroundColor(.white)
+                                    .font(.system(size: 20, weight: .bold))
+                                //                                    .padding(.horizontal)
+                                
+                                Spacer()
+                                
+                                Text("\(banner.title)")
+                                    .foregroundColor(.white)
+                                    .font(.system(size: 30, weight: .bold))
+                                    .lineLimit(2)
+                            }
+                            .padding(.horizontal)
+                        }
+                        .frame(width: w, height: h)
+                        
                         .navigationBarTitleDisplayMode(.inline)
                     }
                 }

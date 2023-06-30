@@ -9,6 +9,7 @@ import SwiftUI
 
 // MARK: - RecommendRow
 struct RecommendRow: View {
+    @EnvironmentObject var recomViewModel: NewsMainViewModel
     let title: String
     let recom: [Article]
     
