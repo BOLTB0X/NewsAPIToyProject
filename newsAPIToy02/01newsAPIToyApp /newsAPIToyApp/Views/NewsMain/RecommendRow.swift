@@ -9,7 +9,6 @@ import SwiftUI
 
 // MARK: - RecommendRow
 struct RecommendRow: View {
-    @EnvironmentObject var recomViewModel: NewsMainViewModel
     let title: String
     let recom: [Article]
     
@@ -23,7 +22,7 @@ struct RecommendRow: View {
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(alignment: .top, spacing: 0) {
-                    ForEach(recom, id: \.self) { recom in
+                    ForEach(recom.prefix(5), id: \.self) { recom in
                         NavigationLink(
                             destination: NewsDetail(articleDetail: recom, loading: $loading),
                             label: {

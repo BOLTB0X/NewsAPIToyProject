@@ -74,7 +74,7 @@ struct Banner: View {
             }
             .onReceive(timer) { _ in
                 withAnimation {
-                    currentIndex = (currentIndex + 1) % BannerViewModel.banners.count // 다음 헤드라인으로 이동
+                    //currentIndex = (currentIndex + 1) % BannerViewModel.banners.count // 다음 헤드라인으로 이동
                 }
             }
         }

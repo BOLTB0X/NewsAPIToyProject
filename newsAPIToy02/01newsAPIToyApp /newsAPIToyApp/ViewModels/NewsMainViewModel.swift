@@ -14,11 +14,13 @@ class NewsMainViewModel:ObservableObject {
     @Published var recom1: [Article] = []
     @Published var recom2: [Article] = []
     @Published var recom3: [Article] = []
+    @Published var recom4: [Article] = []
     
     // 추천 검색어 api는 일단 random으로 대체
-    let radomArr1 = ["Bitcoin", "MMA", "Aespa"]
+    let radomArr1 = ["Bitcoin", "MMA", "Meta", "LOL"]
     let radomArr2 = ["shinkai makoto", "across the spider verse", "oldboy", "spiderman"]
     let radomArr3 = ["Kpop BTS", "Kpop SM", "Aespa", "KPop"] // entertainment
+    let radomArr4 = ["Nike shose", "adidas Yeezy", "jordan scott"]
     var query: String
 
     // 로딩 표현
@@ -26,6 +28,7 @@ class NewsMainViewModel:ObservableObject {
     @Published var loadingRecommend1: Bool = false
     @Published var loadingRecommend2: Bool = false
     @Published var loadingRecommend3: Bool = false
+    @Published var loadingRecommend4: Bool = false
     
     private init() {
         query = ""
@@ -46,6 +49,10 @@ class NewsMainViewModel:ObservableObject {
                 loadingRecommend3 = true
                 try await fetchPostRecommend(series: 3)
                 loadingRecommend3 = false
+                
+                loadingRecommend4 = true
+                try await fetchPostRecommend(series: 4)
+                loadingRecommend4 = false
             } catch {
                 print(error)
             }
@@ -86,8 +93,11 @@ class NewsMainViewModel:ObservableObject {
         } else if series == 2 {
             query = radomArr2.randomElement()!
             print("\(query)")
-        } else {
+        } else if series == 3 {
             query = radomArr3.randomElement()!
+            print("\(query)")
+        } else {
+            query = radomArr4.randomElement()!
             print("\(query)")
         }
         
@@ -105,10 +115,11 @@ class NewsMainViewModel:ObservableObject {
                         self.recom1 = []
                     } else if series == 2 {
                         self.recom2 = []
-                    } else {
+                    } else if series == 3{
                         self.recom3 = []
+                    } else {
+                        self.recom4 = []
                     }
-                    
                 }
                 return
             }
@@ -118,8 +129,10 @@ class NewsMainViewModel:ObservableObject {
                     self.recom1 = apiResult.articles
                 } else if series == 2 {
                     self.recom2 = apiResult.articles
-                } else {
+                } else if series == 3{
                     self.recom3 = apiResult.articles
+                } else {
+                    self.recom4 = apiResult.articles
                 }
             }
         } catch {
