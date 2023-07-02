@@ -16,9 +16,17 @@ struct RecommendRow: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            Text("\(title)")
-                .font(.headline)
-                .padding(.leading, 15)
+            HStack(alignment: .center) {
+                Text("\(title)")
+                    .font(.headline)
+                    .padding(.leading, 15)
+                                
+                NavigationLink(destination: RecommendList(recom: recom), label: {
+                    Text("View all")
+                        .font(.subheadline)
+                        .padding(.leading, 15)
+                })
+            }
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(alignment: .top, spacing: 0) {

@@ -23,6 +23,7 @@ struct HeadLine: View {
                     }) {
                         HeadLineCell(curNews: result, loading: $isProgressView) // 셀 구성
                     }
+                    .padding()
                     .sheet(isPresented: self.$showingSheet) {
                         NewsDetail(articleDetail: result, loading: $isProgressView)
                     }

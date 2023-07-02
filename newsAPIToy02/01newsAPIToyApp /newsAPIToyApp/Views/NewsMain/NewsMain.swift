@@ -18,11 +18,11 @@ struct NewsMain: View {
                     .padding(.horizontal)
                 
                 RecommendRow(title: "Hot issue", recom: newsMainViewModel.recom1, loading: $newsMainViewModel.loadingRecommend1)
-
+                 
                 RecommendRow(title: "Movie", recom: newsMainViewModel.recom2, loading: $newsMainViewModel.loadingRecommend2)
-                
+                  
                 RecommendRow(title: "K-pop", recom: newsMainViewModel.recom3, loading: $newsMainViewModel.loadingRecommend3)
-
+                    
                 RecommendRow(title: "Shose", recom: newsMainViewModel.recom4, loading: $newsMainViewModel.loadingRecommend4)
             }
             .listStyle(.inset)

@@ -15,41 +15,77 @@ struct HeadLineCell: View {
         VStack(spacing: 5) {
             HStack {
                 VStack(alignment: .leading, spacing: 5) {
-                    // 제목
-                    Text(curNews.title)
-                        .font(.title)
-                        .bold()
-                        .foregroundColor(.black)
-                        .lineLimit(2)
-                    HStack(spacing: 15) {
-                        Text(curNews.author ?? "")
+                    if loading {
+                        // 제목
+                        Text(curNews.title)
+                            .font(.title)
+                            .bold()
+                            .foregroundColor(.black)
+                            .lineLimit(2)
+                        HStack(spacing: 15) {
+                            Text(curNews.author ?? "")
+                            
+                            Text(curNews.publishedAt)
+                        }
+                        .lineLimit(1)
+                        
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                    } else {
+                        // 제목
+                        Text(curNews.title)
+                            .font(.title)
+                            .bold()
+                            .foregroundColor(.black)
+                            .lineLimit(2)
+                            .redacted(reason: .placeholder)
 
-                        Text(curNews.publishedAt)
+                        HStack(spacing: 15) {
+                            Text(curNews.author ?? "")
+                                .redacted(reason: .placeholder)
+
+                            Text(curNews.publishedAt)
+                                .redacted(reason: .placeholder)
+
+                        }
+                        .lineLimit(1)
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
                     }
-                    .lineLimit(1)
-
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
                 }
                 Spacer()
             }
 
             // 이미지
             AsyncImage(url: URL(string: curNews.urlToImage ?? "")) { image in
-                image.resizable()
+                image
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .onAppear {
+                        loading = true
+                    }
             } placeholder: {
                 ProgressView()
-                    .scaleEffect(5.0)
+                    .aspectRatio(contentMode: .fit)
+                    .foregroundColor(.secondary)
+                    .onAppear {
+                        loading = false
+                    }
+                    .redacted(reason: .placeholder)
             }
-//            .scaledToFit()
-            .frame(width: 350, height: 300)
-            .clipped()
-            .cornerRadius(10)
             
-            // 요약
-            Text(curNews.description ?? "")
-                .foregroundColor(.black)
-                .lineLimit(3)
+            if loading {
+                // 요약
+                Text(curNews.description ?? "")
+                    .foregroundColor(.black)
+                    .lineLimit(3)
+            } else {
+                Text(curNews.description ?? "")
+                    .foregroundColor(.black)
+                    .lineLimit(3)
+                    .redacted(reason: .placeholder)
+
+            }
         }
     }
 }
