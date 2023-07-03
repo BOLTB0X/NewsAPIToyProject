@@ -42,6 +42,7 @@ struct HeadLine: View {
             }
             .listStyle(.grouped)
             .navigationTitle("News HeadLine")
+            .navigationBarTitleDisplayMode(.inline)
         }
         // 초기 진입시 task로 비동기로 뷰에 나타낼 data를 불러오는 부분
         .task {

@@ -14,10 +14,10 @@ class CoreDataManager {
     
     // MARK: - searchContainer
     lazy var searchContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "Search")
+        let container = NSPersistentContainer(name: "CoreModel")
         container.loadPersistentStores(completionHandler: { (_, error) in
             if let error = error as NSError? {
-                fatalError("error \(error), \(error.userInfo)")
+                fatalError("검색 컨테이너 error: \(error), \(error.userInfo)")
             }
         })
         return container
@@ -36,35 +36,46 @@ class CoreDataManager {
     
     // MARK: - saveSearchHistory
     func saveSearchHistory(text: String, datetime: String) {
-        let context = searchContainer.viewContext
+        let context = self.searchContainer.viewContext
+        let entity = NSEntityDescription.entity(forEntityName: "Search", in: context)!
+        let search = NSManagedObject(entity: entity, insertInto: context)
         
-        // 중복 체크
-        let fetchRequest: NSFetchRequest<Search> = Search.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "text == %@", text)
-        
-        do {
-            let searchResults = try context.fetch(fetchRequest)
-            if let pastSearch = searchResults.first {
-                // 이미 저장된 검색 기록이 있으면 패스
-                print("이미 저장된 검색 기록입니다.")
-                return
-            }
-        } catch {
-            print("중복 체크 실패: \(error)")
-            return
-        }
-        
-        // 저장 로직
-        let search = Search(context: context)
-        search.text = text
-        search.datetime = datetime
+        search.setValue(text, forKeyPath: "text")
+        search.setValue(datetime, forKeyPath: "datetime")
         
         do {
             try context.save()
-            print("검색 기록 저장")
         } catch {
-            print("실패한 에러: \(error)")
+            print("search 저장 실패: \(error)")
         }
+
+//        // 중복 체크
+//        let fetchRequest: NSFetchRequest<Search> = Search.fetchRequest()
+//        fetchRequest.predicate = NSPredicate(format: "text == %@", text ?? "")
+//
+//        do {
+//            let searchResults = try context.fetch(fetchRequest)
+//            if let pastSearch = searchResults.first {
+//                // 이미 저장된 검색 기록이 있으면 패스
+//                print("이미 저장된 검색 기록입니다.")
+//                return
+//            }
+//        } catch {
+//            print("중복 체크 실패: \(error)")
+//            return
+//        }
+//
+//        // 저장 로직
+//        let search = Search(context: context)
+//        search.text = text
+//        search.datetime = datetime
+//
+//        do {
+//            try context.save()
+//            print("검색 기록 저장")
+//        } catch {
+//            print("실패한 에러: \(error)")
+//        }
     }
     
     // MARK: - saveFavorite
@@ -107,7 +118,7 @@ class CoreDataManager {
             print("실패한 에러: \(error)")
         }
     }
-
+    
     // MARK: - deleteSearchHistory
     func deleteSearchHistory(search: Search) {
         let context = searchContainer.viewContext

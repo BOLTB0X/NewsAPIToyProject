@@ -17,11 +17,11 @@ struct SearchBar: View {
     var body: some View {
         HStack {
             TextField("검색", text: $text, onCommit: {
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss" // 원하는 날짜 형식으로 설정
-                let datetimeString = dateFormatter.string(from: Date())
-                
-                CoreDataManager.shared.saveSearchHistory(text: text, datetime: datetimeString)
+//                let dateFormatter = DateFormatter()
+//                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss" // 원하는 날짜 형식으로 설정
+//                let datetimeString = dateFormatter.string(from: Date())
+//
+//                CoreDataManager.shared.saveSearchHistory(text: text, datetime: datetimeString)
                 startSearch() // 뷰모델의 메소드로 검색 수행
             })
             .padding(7)

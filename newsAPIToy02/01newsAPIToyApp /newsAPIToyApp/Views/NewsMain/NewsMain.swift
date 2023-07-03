@@ -27,6 +27,7 @@ struct NewsMain: View {
             }
             .listStyle(.inset)
             .navigationTitle("News")
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     NavigationLink(destination: HeadLine()) {
@@ -35,7 +36,7 @@ struct NewsMain: View {
                 }
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    NavigationLink(destination: Everything()) {
+                    NavigationLink(destination: SearchMain()) {
                         Image(systemName: "magnifyingglass")
                     }
                 }
@@ -44,8 +45,8 @@ struct NewsMain: View {
     }
 }
 
-struct NewsMain_Previews: PreviewProvider {
-    static var previews: some View {
-        NewsMain()
-    }
-}
+//struct NewsMain_Previews: PreviewProvider {
+//    static var previews: some View {
+//        NewsMain()
+//    }
+//}
