@@ -8,41 +8,52 @@
 import SwiftUI
 
 struct SearchMain: View {
+    @Environment(\.presentationMode) var presentationMode
     @ObservedObject var searchViewModel = SearchViewModel()
+    @EnvironmentObject var newsViewModel: NewsMainViewModel
     @StateObject var everyViewModel = EverythingViewModel()
     
-    @State private var inputText: String = ""
+    @State private var click: Bool = false
     @State private var loading: Bool = false
     
     var body: some View {
         NavigationView {
             VStack {
-                SearchBar(text: $inputText, startSearch: {
+                SearchBar(text: $searchViewModel.inputText, startSearch: {
                     Task {
                         do {
-                            
-                            try await everyViewModel.fetchNewsEverythingOnServer(query: inputText)
+                            try await everyViewModel.fetchNewsEverythingOnServer(query: searchViewModel.inputText)
                         } catch {
                             // 오류 처리
                             print("Error: \(error)")
                         }
                     }
-                    CoreDataManager.shared.saveSearchHistory(text: inputText, datetime: "")
                 })
                 
-                List {
-                    ForEach(searchViewModel.searchItems) { result in
-                        Text(result.text ?? "")
+                List(searchViewModel.filteredArticles, id: \.url) { article in
+                    Button(action: {
+                        self.click.toggle()
+                        searchViewModel.detailArticle = article
+                    }) {
+                        Text(article.title)
+                            .lineLimit(2)
+                    }
+                    .sheet(isPresented: self.$click) {
+                        NewsDetail(articleDetail: searchViewModel.detailArticle, loading: $loading)
                     }
                 }
-                
             }
             .listStyle(.inset)
             .navigationTitle("Search")
+            .navigationBarBackButtonHidden(true)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                   
+                    Button(action: {
+                        presentationMode.wrappedValue.dismiss()
+                    }) {
+                        Image(systemName: "arrow.backward")
+                    }
                 }
             }
         }

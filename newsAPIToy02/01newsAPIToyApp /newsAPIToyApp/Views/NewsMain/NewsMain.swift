@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct NewsMain: View {
+    @Environment(\.presentationMode) var presentationMode
     @ObservedObject var newsMainViewModel = NewsMainViewModel.shared
     
     var body: some View {
@@ -27,16 +28,21 @@ struct NewsMain: View {
             }
             .listStyle(.inset)
             .navigationTitle("News")
+            //.navigationBarHidden(true)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    NavigationLink(destination: HeadLine()) {
+                    NavigationLink(destination: HeadLine()
+                        .environmentObject(newsMainViewModel)) {
                         Image(systemName: "h.circle")
                     }
                 }
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    NavigationLink(destination: SearchMain()) {
+                    NavigationLink(destination: SearchMain()
+                        .environmentObject(newsMainViewModel)
+                        //.navigationTitle("Search")
+                        .navigationBarBackButtonHidden(true)) {
                         Image(systemName: "magnifyingglass")
                     }
                 }
