@@ -8,45 +8,46 @@
 import SwiftUI
 
 struct Everything: View {
-    @StateObject var everyViewModel = EverythingViewModel()
-    @State private var inputText: String = ""
+    @Environment(\.presentationMode) var presentationMode
+    @StateObject var everyViewModel: EverythingViewModel
     @State private var loading: Bool = false
+    @State private var click: Bool = false
+    
+    let query: String
     
     var body: some View {
-        VStack {
-            SearchBar(text: $inputText, startSearch: {
-                Task {
-                    do {
-                        try await everyViewModel.fetchNewsEverythingOnServer(query: inputText)
-                        
-                    } catch {
-                        // 오류 처리
-                        print("Error: \(error)")
-                    }
-                }
-            })
-            
+        NavigationView {
             if !everyViewModel.items.isEmpty {
                 List {
                     ForEach(everyViewModel.items) { result in
-                        NavigationLink(destination: NewsDetail(articleDetail: result, loading: $loading), label:  {
+                        Button(action: {
+                            self.click.toggle()
+                            everyViewModel.detailArticle = result
+                        }) {
                             EverythingCell(item: result)
-                        })
+                        }
+                        .sheet(isPresented: self.$click) {
+                            NewsDetail(articleDetail: everyViewModel.detailArticle, loading: $loading)
+                        }
                     }
                     .padding(5)
                 }
-                .listStyle(.grouped)
+                .listStyle(.inset)
+                .navigationTitle("\(query)")
+                //.navigationBarBackButtonHidden(true)
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Button(action: {
+                            presentationMode.wrappedValue.dismiss()
+                        }) {
+                            Image(systemName: "arrow.backward")
+                        }
+                    }
+                }
             } else {
-                Spacer()
-                Text("Please!!")
-                Spacer()
+                Text("Wait Please!!")
             }
         }
-    }
-}
-
-struct Everything_Previews: PreviewProvider {
-    static var previews: some View {
-        Everything()
     }
 }

@@ -10,6 +10,8 @@ import SwiftUI
 // MARK: - HeadLineView
 // 뉴스기사를 보여주는 View
 struct HeadLine: View {
+    @Environment(\.presentationMode) var presentationMode
+
     @StateObject var headlineVM = HeadLineViewModel()
     @State private var isProgressView = false
     @State private var showingSheet: Bool = false
@@ -43,6 +45,16 @@ struct HeadLine: View {
             .listStyle(.grouped)
             .navigationTitle("News HeadLine")
             .navigationBarTitleDisplayMode(.inline)
+            //.navigationBarBackButtonHidden(true)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: {
+                        presentationMode.wrappedValue.dismiss()
+                    }) {
+                        Image(systemName: "arrow.backward")
+                    }
+                }
+            }
         }
         // 초기 진입시 task로 비동기로 뷰에 나타낼 data를 불러오는 부분
         .task {

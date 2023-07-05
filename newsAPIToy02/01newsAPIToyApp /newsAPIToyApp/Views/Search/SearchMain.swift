@@ -11,7 +11,7 @@ struct SearchMain: View {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var searchViewModel = SearchViewModel()
     @EnvironmentObject var newsViewModel: NewsMainViewModel
-    @StateObject var everyViewModel = EverythingViewModel()
+    @ObservedObject var everyViewModel = EverythingViewModel()
     
     @State private var click: Bool = false
     @State private var loading: Bool = false
@@ -27,8 +27,14 @@ struct SearchMain: View {
                             // 오류 처리
                             print("Error: \(error)")
                         }
+                        everyViewModel.isTry = true
                     }
                 })
+                
+                NavigationLink(destination: Everything(everyViewModel: everyViewModel, query: searchViewModel.inputText).navigationBarBackButtonHidden(true), isActive: $everyViewModel.isTry) {
+                    EmptyView()
+                }
+                .hidden()
                 
                 List(searchViewModel.filteredArticles, id: \.url) { article in
                     Button(action: {

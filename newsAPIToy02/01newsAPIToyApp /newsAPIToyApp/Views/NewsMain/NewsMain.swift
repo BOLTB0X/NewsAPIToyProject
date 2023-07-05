@@ -28,12 +28,12 @@ struct NewsMain: View {
             }
             .listStyle(.inset)
             .navigationTitle("News")
-            //.navigationBarHidden(true)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     NavigationLink(destination: HeadLine()
-                        .environmentObject(newsMainViewModel)) {
+                        .environmentObject(newsMainViewModel)
+                        .navigationBarBackButtonHidden(true)) {
                         Image(systemName: "h.circle")
                     }
                 }
@@ -41,7 +41,6 @@ struct NewsMain: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     NavigationLink(destination: SearchMain()
                         .environmentObject(newsMainViewModel)
-                        //.navigationTitle("Search")
                         .navigationBarBackButtonHidden(true)) {
                         Image(systemName: "magnifyingglass")
                     }

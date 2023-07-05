@@ -10,13 +10,14 @@ import Foundation
 // MARK: - EverythingViewModel
 class EverythingViewModel: ObservableObject {
     @Published var items: [Article] = [] // 뉴스기사들을 담을 배열
-    // 검색 관련
-    @Published var searchHistory: [String] = [] // 검색 기록 배얄
     
     // main 에 넣을 프로퍼티
     @Published var bitcoins: [Article] = []
     @Published var teslas: [Article] = []
     @Published var aespa: [Article] = []
+    
+    @Published var detailArticle: Article = Article.getDummy()
+    @Published var isTry: Bool = false
     
     private let articlesPerPage: Int = 5
     private var isLoading = false // 계속 불러올지 체크 변수

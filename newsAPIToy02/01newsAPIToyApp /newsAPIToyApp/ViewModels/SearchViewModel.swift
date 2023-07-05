@@ -12,12 +12,12 @@ import CoreData
 class SearchViewModel: ObservableObject {
     static let shared = SearchViewModel()
     
+    @Published var inputText: String = ""
+    @Published var detailArticle: Article = Article.getDummy()
+    
     init() {
         
     }
-    
-    @Published var inputText: String = ""
-    @Published var detailArticle: Article = Article.getDummy()
     
     var filteredArticles: [Article] {
         let searchText = inputText.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
