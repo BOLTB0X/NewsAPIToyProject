@@ -41,8 +41,9 @@ struct SearchMain: View {
                         self.click.toggle()
                         searchViewModel.detailArticle = article
                     }) {
-                        Text(article.title)
-                            .lineLimit(2)
+                        SearchCell(item: article)
+//                        Text(article.title)
+//                            .lineLimit(2)
                     }
                     .sheet(isPresented: self.$click) {
                         NewsDetail(articleDetail: searchViewModel.detailArticle, loading: $loading)
@@ -51,7 +52,7 @@ struct SearchMain: View {
             }
             .listStyle(.inset)
             .navigationTitle("Search")
-            .navigationBarBackButtonHidden(true)
+//            .navigationBarBackButtonHidden(true)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {

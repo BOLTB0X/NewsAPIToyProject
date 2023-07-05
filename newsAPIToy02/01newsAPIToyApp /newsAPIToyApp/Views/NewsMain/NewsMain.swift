@@ -24,7 +24,7 @@ struct NewsMain: View {
                   
                 RecommendRow(title: "K-pop", recom: newsMainViewModel.recom3, loading: $newsMainViewModel.loadingRecommend3)
                     
-                RecommendRow(title: "Shose", recom: newsMainViewModel.recom4, loading: $newsMainViewModel.loadingRecommend4)
+                RecommendRow(title: "Brand", recom: newsMainViewModel.recom4, loading: $newsMainViewModel.loadingRecommend4)
             }
             .listStyle(.inset)
             .navigationTitle("News")

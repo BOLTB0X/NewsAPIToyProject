@@ -22,12 +22,13 @@ struct HeadLine: View {
                 ForEach(headlineVM.items) { result in
                     Button(action: {
                         showingSheet.toggle()
+                        headlineVM.detailArticle = result
                     }) {
                         HeadLineCell(curNews: result, loading: $isProgressView) // 셀 구성
                     }
                     .padding()
                     .sheet(isPresented: self.$showingSheet) {
-                        NewsDetail(articleDetail: result, loading: $isProgressView)
+                        NewsDetail(articleDetail: headlineVM.detailArticle, loading: $isProgressView)
                     }
                     .onAppear { // onAppear를 이용하여 사용자가 터치로 밑으로 내릴때 추가로
                         // 뉴스기사(data)가 필요로 하는 지를 판단함

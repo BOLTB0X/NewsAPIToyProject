@@ -15,7 +15,8 @@ class HeadLineViewModel: ObservableObject {
     private let articlesPerPage: Int = 5
     
     @Published var isLoading = false // 계속 불러올지 체크 변수
-    
+    @Published var detailArticle: Article = Article.getDummy()
+
     
     init() {
         // 초기 데이터를 가져오기 위해 첫 번째 페이지 로드

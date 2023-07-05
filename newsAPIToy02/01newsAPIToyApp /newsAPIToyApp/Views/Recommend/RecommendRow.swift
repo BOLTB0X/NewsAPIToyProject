@@ -21,7 +21,8 @@ struct RecommendRow: View {
                     .font(.headline)
                     .padding(.leading, 15)
                                 
-                NavigationLink(destination: RecommendList(recom: recom), label: {
+                NavigationLink(destination: RecommendList(title: title, recom: recom)
+                    .navigationBarBackButtonHidden(true), label: {
                     Text("View all")
                         .font(.subheadline)
                         .padding(.leading, 15)

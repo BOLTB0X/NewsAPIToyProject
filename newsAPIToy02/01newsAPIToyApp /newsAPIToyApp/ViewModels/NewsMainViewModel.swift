@@ -20,7 +20,7 @@ class NewsMainViewModel:ObservableObject {
     let radomArr1 = ["Bitcoin", "MMA", "Meta", "LOL"]
     let radomArr2 = ["shinkai makoto", "across the spider verse", "oldboy", "spiderman"]
     let radomArr3 = ["Kpop BTS", "Kpop SM", "Aespa", "KPop"] // entertainment
-    let radomArr4 = ["Nike shose", "adidas Yeezy", "jordan scott"]
+    let radomArr4 = ["Nike", "adidas", "Puma", "asics"]
     var query: String
 
     // 로딩 표현
