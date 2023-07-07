@@ -24,7 +24,7 @@ struct RecommendList: View {
                 .padding(5)
             }
             .listStyle(.inset)
-            .navigationTitle("title")
+            .navigationTitle("\(title)")
 //            .navigationBarBackButtonHidden(true)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {

@@ -12,6 +12,7 @@ struct RecommendRow: View {
     let title: String
     let recom: [Article]
     
+    @State private var click: Bool = false
     @Binding var loading: Bool
     
     var body: some View {
