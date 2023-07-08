@@ -60,18 +60,21 @@ struct HeadLineCell: View {
             AsyncImage(url: URL(string: curNews.urlToImage ?? "")) { image in
                 image
                     .resizable()
+                    .frame(width: 320, height: 200)
                     .aspectRatio(contentMode: .fit)
                     .onAppear {
                         loading = true
                     }
             } placeholder: {
-                ProgressView()
+                Image("free-icon-gallery")
+                    .resizable()
+                    .frame(width: 320, height: 200)
                     .aspectRatio(contentMode: .fit)
                     .foregroundColor(.secondary)
-                    .onAppear {
-                        loading = false
-                    }
                     .redacted(reason: .placeholder)
+//                    .onAppear {
+//                        loading = false
+//                    }
             }
             
             if loading {

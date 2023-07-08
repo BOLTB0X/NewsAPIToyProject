@@ -27,10 +27,10 @@ struct BookMarkCell: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .cornerRadius(8)
+                    .redacted(reason: .placeholder)
                     .onAppear {
                         imgLoading = false // 가리기
                     }
-                    .redacted(reason: .placeholder)
             }
             HStack {
                 VStack(alignment: .leading) {

@@ -10,43 +10,44 @@ import SwiftUI
 struct ContentView: View {
     @State var isLoading: Bool = true
     @EnvironmentObject var manager: BookMarkManager
-    @State private var isAnimating = false
+    
     var body: some View {
         ZStack {
-            Main()
-                .environmentObject(manager)
             if isLoading { // 로딩 중일때 띄울거
-                LaunchScreenView
+                CnimationCircle()
+            } else {
+                Main()
+                    .environmentObject(manager)
             }
         }
         .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
                 isLoading.toggle()
             })
         }
     }
 }
 
-extension ContentView {
-    var LaunchScreenView: some View {
-        ZStack(alignment: .center) {
-            LinearGradient(gradient: Gradient(colors: [Color(.white), Color(.gray)]),
-                           startPoint: .top, endPoint: .bottom)
-            .edgesIgnoringSafeArea(.all)
-            
-            Image(systemName: "n.circle.fill")
-                .resizable()
-                .foregroundColor(.black)
-                .frame(width: 200, height: 200)
-                .rotationEffect(
-                    Angle(
-                        degrees:  self.isAnimating ? 360 : 0
-                    )
-                )
-                .animation(
-                    .linear(duration: self.isAnimating ? 1 : 0)
-                )
-        }
+struct CnimationCircle: View {
+    @State private var animationAmount: CGFloat = 1
+    
+    var body: some View {
+        Image(systemName: "n.circle.fill")
+            .resizable()
+            .foregroundColor(.black)
+            .frame(width: 200, height: 200)
+            .clipShape(Circle())
+            .overlay(
+                Circle()
+                    .stroke(Color.blue, lineWidth: 2)
+                    .scaleEffect(animationAmount)
+                //animationAmount가 1이면 불트명이 1이고, 2이면 불투명도가 0이다
+                    .opacity(Double(2 - animationAmount))
+                    .animation(Animation.easeInOut(duration: 1)
+                        .repeatForever(autoreverses: false)))
+            .onAppear {
+                self.animationAmount = 2
+            }
     }
 }
 
