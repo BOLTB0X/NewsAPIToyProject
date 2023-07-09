@@ -1,40 +1,29 @@
 # NewsAPI ToyProject
 
+![메인1](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/02gif/%EB%A9%94%EC%9D%B81.gif?raw=true) ![메인2](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/02gif/%EB%A9%94%EC%9D%B83.gif?raw=true)
+<br/>
+
+## 컨셉
+
 ![퓨전](https://cdn.eyesmag.com/wp-content/uploads/2017/12/28144328/adidas-x-dragonball-z-collaboration-rumor-main.gif)
-
-[NewsAPI](https://newsapi.org)을 활용하여 혼자서 노는 ToyProject
 <br/>
 
-[블로그](https://ggasoon2.tistory.com/9)포스팅을 보고 따라 공부하다 이를 활용해보기로 함
+애플의 공식 SwiftUI 튜토리얼 [landMark](https://github.com/BOLTB0X/SwiftUI_Tutorials)와 [NewsAPI](https://newsapi.org)를 합쳐 혼자 노는 ToyProject
 <br/>
 
-- newsAPIToy01
-  <br/>
-  무한 스크롤 추가
-  <br/>
+### 1단계: API 호출
 
-- newsAPIToy02
-  <br/>
-  애플의 공식 SwiftUI 튜토리얼 [landMark](https://github.com/BOLTB0X/SwiftUI_Tutorials)와 [NewsAPI](https://newsapi.org)를 합쳐 보기
-
-## TODO
-
-애플의 공식 SwiftUI 튜토리얼 [landMark](https://github.com/BOLTB0X/SwiftUI_Tutorials)의 Model를 [NewsAPI](https://newsapi.org)으로 해보는 것
+[블로그](https://ggasoon2.tistory.com/9) 포스팅을 보고 따라해보며 학습
 <br/>
 
-1. 북마크
-   <br/>
-
-2. 검색 추가
-   <br/>
-
-3. 폰트 및 뷰 정리
-   <br/>
-
-4. 모달뷰(뉴스 기사를 클릭하면 다른 뉴스기사가 뜸)
-   <br/>
-
-## **현재 진행률**
-
-![현재 메인](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/gif/main2.gif?raw=true) ![헤드라인](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/gif/%EA%B2%80%EC%83%89%20%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81.gif?raw=true)
+[벤치마킹 프로젝트](https://github.com/BOLTB0X/NewsAPIToyProject/tree/main/Benchmarking%20Project/newsArticle)
 <br/>
+
+### 2단계: newsAPIToy01
+
+[무한 스크롤 참고 블로그](https://codekodo.tistory.com/207)을 참고 하며 뉴스 헤드라인을 API 호출과 무한 스크롤
+<br/>
+
+<br/>
+
+### 3단계 newsAPIToy02
