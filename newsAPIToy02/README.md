@@ -15,7 +15,7 @@ TODO 각 기능의 코드 설명을 붙일 예정
    <br/>
    ![첫](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/02gif/%EC%95%B1%20%EB%9F%B0%EC%B9%98%EC%8A%A4%ED%81%AC%EB%A6%B0.gif?raw=true)
 
-   - <details><summary>애니메이션</summary>
+   <details><summary>애니메이션</summary>
 
    ```swift
    struct CnimationCircle: View {
@@ -70,7 +70,7 @@ TODO 각 기능의 코드 설명을 붙일 예정
    <br/>
    </details>
 
-   - <details><summary>데이터 로딩 구분</summary>
+   <details><summary>데이터 로딩 구분</summary>
 
    ```swift
    struct ContentView: View {
@@ -108,7 +108,7 @@ TODO 각 기능의 코드 설명을 붙일 예정
    <br/>
    ![메인1](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/02gif/%EB%A9%94%EC%9D%B81.gif?raw=true) ![메인2](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/02gif/%EB%A9%94%EC%9D%B83.gif?raw=true)
 
-   - <details><summary>배너</summary>
+   <details><summary>배너</summary>
 
    수평 방향으르 스크롤 뷰 구성
    <br/>
