@@ -182,6 +182,8 @@ TODO 각 기능의 코드 설명을 붙일 예정
    withAnimation을 이용하여 2초마다 배너의 이미지를 넘겨줌
    <br/>
 
+   [코드 보기](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/newsAPIToy02/01newsAPIToyApp%20/newsAPIToyApp/Views/NewsMain/Banner.swift)
+
    </details>
 
 2. BookMark
