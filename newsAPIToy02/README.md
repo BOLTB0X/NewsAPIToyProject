@@ -9,12 +9,11 @@
 TODO 각 기능의 코드 설명을 붙일 예정
 <br/>
 
-## View
-
 #### 0.Launch Screen
 
-<br/>
 ![첫](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/02gif/%EC%95%B1%20%EB%9F%B0%EC%B9%98%EC%8A%A4%ED%81%AC%EB%A6%B0.gif?raw=true)
+
+<br/>
 
 <details><summary>애니메이션</summary>
 
@@ -107,7 +106,8 @@ struct ContentView: View {
 if-else 구문으로 나타낼 뷰를 구분 시킴
 <br/>
 
-- [ContentView 코드 보기](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/newsAPIToy02/01newsAPIToyApp%20/newsAPIToyApp/Views/ContentView.swift)
+[ContentView 코드 보기](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/newsAPIToy02/01newsAPIToyApp%20/newsAPIToyApp/Views/ContentView.swift)
+<br/>
 
 </details>
 
@@ -192,10 +192,10 @@ private let timer = Timer.publish(every: 2, on: .main, in: .common).autoconnect(
 withAnimation을 이용하여 2초마다 배너의 이미지를 넘겨줌
 <br/>
 
-- [Banner 코드 보기](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/newsAPIToy02/01newsAPIToyApp%20/newsAPIToyApp/Views/NewsMain/Banner.swift)
+[Banner 코드 보기](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/newsAPIToy02/01newsAPIToyApp%20/newsAPIToyApp/Views/NewsMain/Banner.swift)
 
-</details>
 <br/>
+</details>
 
 <details><summary>가로 카테고리 스크롤</summary>
 
@@ -235,11 +235,9 @@ ScrollView(.horizontal, showsIndicators: false) {
 뉴스기사 이미지를 클릭 시 해당 뉴스 기사 관련 상세 정보가 나타나는 뷰로 이동
 <br/>
 
-- [RecommendRow 코드 보기](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/newsAPIToy02/01newsAPIToyApp%20/newsAPIToyApp/Views/Recommend/RecommendRow.swift)
+[RecommendRow 코드 보기](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/newsAPIToy02/01newsAPIToyApp%20/newsAPIToyApp/Views/Recommend/RecommendRow.swift)
 
 </details>
-
-<br/>
 
 #### 2. BookMark
 
@@ -336,7 +334,8 @@ Core Data를 사용하여 북마크 데이터를 저장하더라도, API로부�
 다른 방안을 모색 중
 <br/>
 
-- ![CoreDataManager 코드 보기](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/newsAPIToy02/01newsAPIToyApp%20/newsAPIToyApp/Models/CoreData/CoreDataManager.swift)
+![CoreDataManager 코드 보기](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/newsAPIToy02/01newsAPIToyApp%20/newsAPIToyApp/Models/CoreData/CoreDataManager.swift)
+
 </details>
 
 <details><summary>북마크 방식</summary>
@@ -460,11 +459,87 @@ struct FavoriteButton: View {
 
 <br/>
 
-- ![BookMark 코드 보기](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/newsAPIToy02/01newsAPIToyApp%20/newsAPIToyApp/Views/BookMark/BookMark.swift)
+![BookMarkManager 코드 보기](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/newsAPIToy02/01newsAPIToyApp%20/newsAPIToyApp/Models/BookMarkManager.swift)
+<br/>
 
-- ![BookMarkManager 코드 보기](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/newsAPIToy02/01newsAPIToyApp%20/newsAPIToyApp/Models/BookMarkManager.swift)
+![FavoriteButton 코드 보기](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/newsAPIToy02/01newsAPIToyApp%20/newsAPIToyApp/Views/SubView/FavoriteButton.swift)
+<br/>
 
-- ![FavoriteButton 코드 보기](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/newsAPIToy02/01newsAPIToyApp%20/newsAPIToyApp/Views/SubView/FavoriteButton.swift)
+<details><summary>북마크 셀</summary>
+
+북마크한 데이터를 나타내는 셀
+<br/>
+
+데이터 로딩 중임을 나타내고 싶어 AsyncImage 이용
+<br/>
+
+텍스트는 redacted
+<br/>
+
+```swift
+struct BookMarkCell: View {
+    let item: Article
+    @State private var imgLoading: Bool = false
+
+    var body: some View {
+        VStack(alignment: .leading) {
+            AsyncImage(url: URL(string: item.urlToImage!)) { image in
+            // 생략
+            } placeholder: {
+               // 생략
+            }
+            HStack {
+                VStack(alignment: .leading) {
+                    if !imgLoading {
+                        // 생략
+                            .redacted(reason: .placeholder)
+
+                    } else {
+                        // 생략
+                    }
+                }
+                .layoutPriority(100)
+
+            }
+            .padding()
+        }
+        // 생략
+        .padding(.horizontal)
+    }
+}
+```
+
+<br/>
+
+```swift
+// in BookMark.swift
+import SwiftUI
+
+struct BookMark: View {
+    @EnvironmentObject var manager: BookMarkManager
+    @State private var cellClick: Bool = false
+
+    var body: some View {
+        NavigationView {
+            List { // ForEach로 담겨진 뉴스기사 배열을 깔끔히 처리를 위해 List를 사용
+                ForEach(manager.items) { result in
+                    NavigationLink(
+                        destination: NewsDetail(articleDetail: result, loading: $cellClick),
+                        label: {
+                            BookMarkCell(item: result)
+                        }
+                    )
+                    .navigationTitle("BookMark")
+                }
+            }.listStyle(.inset)
+        }.navigationTitle("BookMark")
+    }
+}
+```
+
+<br/>
+
+![BookMark 코드 보기](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/newsAPIToy02/01newsAPIToyApp%20/newsAPIToyApp/Views/BookMark/BookMark.swift)
 
 </details>
 
@@ -627,7 +702,7 @@ func loadMoreNewsHeadLine(currentItem: Article?) {
 
 <br/>
 
-- [HeadLineViewModel 코드 보기](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/newsAPIToy02/01newsAPIToyApp%20/newsAPIToyApp/ViewModels/HeadLineViewModel.swift)
+[HeadLineViewModel 코드 보기](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/newsAPIToy02/01newsAPIToyApp%20/newsAPIToyApp/ViewModels/HeadLineViewModel.swift)
 
 </details>
 
