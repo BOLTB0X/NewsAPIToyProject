@@ -708,7 +708,7 @@ func loadMoreNewsHeadLine(currentItem: Article?) {
 
 <details><summary>Cell</summary>
 
-![코드 보기](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/newsAPIToy02/01newsAPIToyApp%20/newsAPIToyApp/Views/HeadLine/HeadLineCell.swift)
+![HeadLineCell 보기](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/newsAPIToy02/01newsAPIToyApp%20/newsAPIToyApp/Views/HeadLine/HeadLineCell.swift)
 
 </details>
 
