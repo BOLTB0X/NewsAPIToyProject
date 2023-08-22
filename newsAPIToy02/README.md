@@ -599,7 +599,7 @@ struct HeadLine: View {
 
 <br/>
 
-- ![HeadLine 코드 보기](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/newsAPIToy02/01newsAPIToyApp%20/newsAPIToyApp/Views/HeadLine/HeadLine.swift)
+[HeadLine 코드 보기](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/newsAPIToy02/01newsAPIToyApp%20/newsAPIToyApp/Views/HeadLine/HeadLine.swift)
 
 </details>
 
@@ -711,7 +711,7 @@ func loadMoreNewsHeadLine(currentItem: Article?) {
 
 <details><summary>Cell</summary>
 
-![HeadLineCell 보기](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/newsAPIToy02/01newsAPIToyApp%20/newsAPIToyApp/Views/HeadLine/HeadLineCell.swift)
+[HeadLineCell 보기](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/newsAPIToy02/01newsAPIToyApp%20/newsAPIToyApp/Views/HeadLine/HeadLineCell.swift)
 
 </details>
 
@@ -778,79 +778,33 @@ struct SearchMain: View {
 
 </details>
 
-<details><summary>검색어 저장</summary>
+<details><summary>검색 필터링</summary>
 
-검색했던 문자열을 저장하기 위해 CoreDataManager에 관련 메소드를 만들어 줌
+입력 받는 문자열을 lowercased와 trimmingCharacters으로 필터링
 <br/>
 
 ```swift
-// in CoreDataManager
-import Foundation
-import CoreData
-
-// MARK: - CoreDataManager
-class CoreDataManager {
-    static let shared = CoreDataManager()
-
-    // MARK: - searchContainer
-    lazy var searchContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "CoreModel")
-        container.loadPersistentStores(completionHandler: { (_, error) in
-            if let error = error as NSError? {
-                fatalError("검색 컨테이너 error: \(error), \(error.userInfo)")
-            }
-        })
-        return container
-    }()
-
-    // 생략
-
-    // MARK: - saveSearchHistory
-    func saveSearchHistory(text: String, datetime: String) {
-        let context = self.searchContainer.viewContext
-        let entity = NSEntityDescription.entity(forEntityName: "Search", in: context)!
-        let search = NSManagedObject(entity: entity, insertInto: context)
-
-        search.setValue(text, forKeyPath: "text")
-        search.setValue(datetime, forKeyPath: "datetime")
-
-        do {
-            try context.save()
-        } catch {
-            print("search 저장 실패: \(error)")
-        }
-
-
-```
-
-<br/>
-
-검색 관련 로직을 담당할 뷰모델
-<br/>
-
-```swift
-import Foundation
-import CoreData
-
 // MARK: - SearchViewModel
 class SearchViewModel: ObservableObject {
-    static let shared = SearchViewModel()
-
-    @Published var inputText: String = ""
-    @Published var detailArticle: Article = Article.getDummy()
-
     // 생략
-}
+
+    var filteredArticles: [Article] {
+        let searchText = inputText.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
+
+        // banners, recom1, recom2, recom3, recom4에서 필터링
+        let allArticles = NewsMainViewModel.shared.banners + NewsMainViewModel.shared.recom1 + NewsMainViewModel.shared.recom2 + NewsMainViewModel.shared.recom3 + NewsMainViewModel.shared.recom4
+
+        if searchText.isEmpty {
+            // 검색어가 없는 경우 전체 기사 반환
+            return allArticles
+        } else {
+            // 검색어가 있는 경우 기사들 중 제목에 검색어가 포함된 것만 반환
+            return allArticles.filter { $0.title.lowercased().contains(searchText) == true }
+        }
+
 ```
 
+[SearchViewModel 코드 보기](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/newsAPIToy02/01newsAPIToyApp%20/newsAPIToyApp/ViewModels/SearchViewModel.swift)
 <br/>
 
-</details>
-
-<details><summary>검색 필터링</summary>
-TODO
-</details>
-
-<details><summary>뷰모델</summary>
-TODO
 </details>
