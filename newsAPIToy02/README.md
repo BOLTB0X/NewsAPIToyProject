@@ -1,6 +1,6 @@
 # newsAPIToy02
 
-![벤치마킹](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/gif/%EA%B3%B5%EC%8B%9D%ED%8A%9C%ED%86%A0%EB%A6%AC%EC%96%BC.gif?raw=true) ![newsapi](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/gif/%EB%89%B4%EC%8A%A402_01_%EC%9E%84%EC%8B%9C%EB%A9%94%EC%9D%B8.gif?raw=true)
+![벤치마킹](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/gif/%EA%B3%B5%EC%8B%9D%ED%8A%9C%ED%86%A0%EB%A6%AC%EC%96%BC.gif?raw=true) ![newsapi](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/02gif/%EB%A9%94%EC%9D%B8%20%EC%B5%9C%EC%8B%A0.gif?raw=true)
 <br/>
 
 **SwiftUI 공식 튜토리얼 + NewsAPI**
@@ -9,7 +9,7 @@
 TODO 각 기능의 코드 설명을 붙일 예정
 <br/>
 
-#### 0.Launch Screen
+## 0.Launch Screen
 
 ![첫](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/02gif/%EC%95%B1%20%EB%9F%B0%EC%B9%98%EC%8A%A4%ED%81%AC%EB%A6%B0.gif?raw=true)
 
@@ -111,7 +111,7 @@ if-else 구문으로 나타낼 뷰를 구분 시킴
 
 </details>
 
-#### 1. Main
+## 1. Main
 
 ![메인1](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/02gif/%EB%A9%94%EC%9D%B81.gif?raw=true) ![메인2](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/02gif/%EB%A9%94%EC%9D%B83.gif?raw=true)
 <br/>
@@ -239,9 +239,9 @@ ScrollView(.horizontal, showsIndicators: false) {
 
 </details>
 
-#### 2. BookMark
+## 2. BookMark
 
-![북마크](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/02gif/%EB%B6%81%EB%A7%88%ED%81%AC.gif?raw=true)
+![북마크](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/02gif/%EB%B6%81%EB%A7%88%ED%81%AC.gif?raw=true) ![북마크2](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/02gif/%EB%B6%81%EB%A7%88%ED%81%AC2.gif?raw=true)
 <br/>
 
 <details><summary>코어 데이터</summary>
@@ -465,6 +465,8 @@ struct FavoriteButton: View {
 ![FavoriteButton 코드 보기](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/newsAPIToy02/01newsAPIToyApp%20/newsAPIToyApp/Views/SubView/FavoriteButton.swift)
 <br/>
 
+</details>
+
 <details><summary>북마크 셀</summary>
 
 북마크한 데이터를 나타내는 셀
@@ -543,9 +545,10 @@ struct BookMark: View {
 
 </details>
 
-#### 3. HeadLine
+## 3. HeadLine
 
-![해드라인](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/02gif/%ED%97%A4%EB%93%9C%EB%9D%BC%EC%9D%B8.gif?raw=true)
+![해드라인](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/02gif/%ED%97%A4%EB%93%9C%EB%9D%BC%EC%9D%B8.gif?raw=true) ![헤드라인2](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/02gif/%ED%97%A4%EB%93%9C%EB%9D%BC%EC%9D%B82.gif?raw=true)
+<br/>
 
 <details><summary>헤드라인 메인 뷰</summary>
 
@@ -712,11 +715,139 @@ func loadMoreNewsHeadLine(currentItem: Article?) {
 
 </details>
 
-#### 4. Search
+## 4. Search
 
-![검색1](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/02gif/%EA%B2%80%EC%83%89.gif?raw=true) ![검색2](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/02gif/%EA%B2%80%EC%83%89%20%EC%83%81%EC%84%B8.gif?raw=true)
+![검색1](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/02gif/%EA%B2%80%EC%83%89.gif?raw=true) ![검색2](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/02gif/%EA%B2%80%EC%83%892.gif?raw=true)
+<br/>
 
-<details><summary>검색 창</summary>
+![검색 기능](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/02gif/%EA%B2%80%EC%83%89%20%EC%83%81%EC%84%B8.gif?raw=true) ![검색 필터링](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/02gif/%EA%B2%80%EC%83%89%20%ED%95%84%ED%84%B0%EB%A7%81.gif?raw=true)
+<br/>
+
+<details><summary>검색 View</summary>
+
+기본 @State, @Binding과 오픈 소스 이용하여 검색 bar 구현
+<br/>
+
+[참고 코드 보기](https://www.appcoda.com/swiftui-search-bar/)
+<br/>
+
+검색 바에서 검색어를 입력받아 무한스크롤과 동일한 로직으로 데이터를 받아옴
+<br/>
+
+```swift
+// in Search
+import SwiftUI
+
+struct SearchMain: View {
+    // 생략
+    @ObservedObject var searchViewModel = SearchViewModel()
+    @EnvironmentObject var newsViewModel: NewsMainViewModel
+    @ObservedObject var everyViewModel = EverythingViewModel()
+
+    // 생략
+
+    var body: some View {
+        NavigationView {
+            VStack {
+                SearchBar(text: $searchViewModel.inputText, startSearch: {
+                    Task {
+                        do {
+                           // 검색이 될 때 메소드 호출
+                            try await everyViewModel.fetchNewsEverythingOnServer(query: searchViewModel.inputText)
+                        } catch {
+                            // 오류 처리
+                            print("Error: \(error)")
+                        }
+                        everyViewModel.isTry = true
+                    }
+                })
+
+                // 생략
+            }
+        }
+    }
+}
+
+```
+
+[SearchBar 코드 보기](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/newsAPIToy02/01newsAPIToyApp%20/newsAPIToyApp/Views/Search/SearchBar.swift)
+<br/>
+
+[Search.swift 코드 보기](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/newsAPIToy02/01newsAPIToyApp%20/newsAPIToyApp/Views/Search/SearchMain.swift)
+<br/>
+
+</details>
+
+<details><summary>검색어 저장</summary>
+
+검색했던 문자열을 저장하기 위해 CoreDataManager에 관련 메소드를 만들어 줌
+<br/>
+
+```swift
+// in CoreDataManager
+import Foundation
+import CoreData
+
+// MARK: - CoreDataManager
+class CoreDataManager {
+    static let shared = CoreDataManager()
+
+    // MARK: - searchContainer
+    lazy var searchContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: "CoreModel")
+        container.loadPersistentStores(completionHandler: { (_, error) in
+            if let error = error as NSError? {
+                fatalError("검색 컨테이너 error: \(error), \(error.userInfo)")
+            }
+        })
+        return container
+    }()
+
+    // 생략
+
+    // MARK: - saveSearchHistory
+    func saveSearchHistory(text: String, datetime: String) {
+        let context = self.searchContainer.viewContext
+        let entity = NSEntityDescription.entity(forEntityName: "Search", in: context)!
+        let search = NSManagedObject(entity: entity, insertInto: context)
+
+        search.setValue(text, forKeyPath: "text")
+        search.setValue(datetime, forKeyPath: "datetime")
+
+        do {
+            try context.save()
+        } catch {
+            print("search 저장 실패: \(error)")
+        }
+
+
+```
+
+<br/>
+
+검색 관련 로직을 담당할 뷰모델
+<br/>
+
+```swift
+import Foundation
+import CoreData
+
+// MARK: - SearchViewModel
+class SearchViewModel: ObservableObject {
+    static let shared = SearchViewModel()
+
+    @Published var inputText: String = ""
+    @Published var detailArticle: Article = Article.getDummy()
+
+    // 생략
+}
+```
+
+<br/>
+
+</details>
+
+<details><summary>검색 필터링</summary>
 TODO
 </details>
 
