@@ -6,9 +6,6 @@
 **SwiftUI 공식 튜토리얼 + NewsAPI**
 <br/>
 
-TODO 각 기능의 코드 설명을 붙일 예정
-<br/>
-
 ## 0.Launch Screen
 
 ![첫](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/02gif/%EC%95%B1%20%EB%9F%B0%EC%B9%98%EC%8A%A4%ED%81%AC%EB%A6%B0.gif?raw=true)
@@ -334,7 +331,7 @@ Core Data를 사용하여 북마크 데이터를 저장하더라도, API로부�
 다른 방안을 모색 중
 <br/>
 
-![CoreDataManager 코드 보기](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/newsAPIToy02/01newsAPIToyApp%20/newsAPIToyApp/Models/CoreData/CoreDataManager.swift)
+[CoreDataManager 코드 보기](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/newsAPIToy02/01newsAPIToyApp%20/newsAPIToyApp/Models/CoreData/CoreDataManager.swift)
 
 </details>
 
@@ -459,10 +456,10 @@ struct FavoriteButton: View {
 
 <br/>
 
-![BookMarkManager 코드 보기](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/newsAPIToy02/01newsAPIToyApp%20/newsAPIToyApp/Models/BookMarkManager.swift)
+[BookMarkManager 코드 보기](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/newsAPIToy02/01newsAPIToyApp%20/newsAPIToyApp/Models/BookMarkManager.swift)
 <br/>
 
-![FavoriteButton 코드 보기](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/newsAPIToy02/01newsAPIToyApp%20/newsAPIToyApp/Views/SubView/FavoriteButton.swift)
+[FavoriteButton 코드 보기](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/newsAPIToy02/01newsAPIToyApp%20/newsAPIToyApp/Views/SubView/FavoriteButton.swift)
 <br/>
 
 </details>
@@ -541,7 +538,7 @@ struct BookMark: View {
 
 <br/>
 
-![BookMark 코드 보기](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/newsAPIToy02/01newsAPIToyApp%20/newsAPIToyApp/Views/BookMark/BookMark.swift)
+[BookMark 코드 보기](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/newsAPIToy02/01newsAPIToyApp%20/newsAPIToyApp/Views/BookMark/BookMark.swift)
 
 </details>
 
@@ -710,6 +707,32 @@ func loadMoreNewsHeadLine(currentItem: Article?) {
 </details>
 
 <details><summary>Cell</summary>
+
+```swift
+    // 이미지
+    AsyncImage(url: URL(string: curNews.urlToImage ?? "")) { image in
+        image
+            .resizable()
+            .frame(width: 320, height: 200)
+            .aspectRatio(contentMode: .fit)
+            .onAppear {
+                loading = true
+            }
+    } placeholder: {
+        Image("free-icon-gallery")
+            .resizable()
+            .frame(width: 320, height: 200)
+            .aspectRatio(contentMode: .fit)
+            .foregroundColor(.secondary)
+            .redacted(reason: .placeholder)
+//                    .onAppear {
+//                        loading = false
+//                    }
+}
+```
+
+AsyncImage 이용, 이미지를 로딩 중일 때는 redacted 이용
+<br/>
 
 [HeadLineCell 보기](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/newsAPIToy02/01newsAPIToyApp%20/newsAPIToyApp/Views/HeadLine/HeadLineCell.swift)
 
