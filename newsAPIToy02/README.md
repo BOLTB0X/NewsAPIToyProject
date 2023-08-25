@@ -854,10 +854,11 @@ struct SearchMain: View {
 
 <details><summary>검색 필터링</summary>
 
-입력 받는 문자열을 lowercased와 trimmingCharacters으로 필터링
+뷰모델에서 입력 받는 문자열을 lowercased와 trimmingCharacters으로 필터링
 <br/>
 
 ```swift
+// in SearchViewModel.swift
 // MARK: - SearchViewModel
 class SearchViewModel: ObservableObject {
     // 생략
@@ -878,7 +879,33 @@ class SearchViewModel: ObservableObject {
 
 ```
 
-[SearchViewModel 코드 보기](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/newsAPIToy02/01newsAPIToyApp%20/newsAPIToyApp/ViewModels/SearchViewModel.swift)
+<br/>
+
+[SearchViewModel.swift 코드 보기](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/newsAPIToy02/01newsAPIToyApp%20/newsAPIToyApp/ViewModels/SearchViewModel.swift)
+<br/>
+
+뷰에서 필터링된 검색관련 퍼블리싱한 배열을 리스트로 나타냄
+<br/>
+
+```swift
+// in Search.swift
+List(searchViewModel.filteredArticles, id: \.url) { article in
+    Button(action: {
+        self.click.toggle()
+        searchViewModel.detailArticle = article
+    }) {
+        SearchCell(item: article)
+//                        Text(article.title)
+//                            .lineLimit(2)
+    }
+    .sheet(isPresented: self.$click) {
+        NewsDetail(articleDetail: searchViewModel.detailArticle, loading: $loading)
+        }
+    }
+}
+```
+
+[SearchMain.swift 코드 보기](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/newsAPIToy02/01newsAPIToyApp%20/newsAPIToyApp/Views/Search/SearchMain.swift)
 <br/>
 
 </details>
