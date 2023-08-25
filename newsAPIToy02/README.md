@@ -1,6 +1,6 @@
 # newsAPIToy02
 
-![벤치마킹](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/gif/%EA%B3%B5%EC%8B%9D%ED%8A%9C%ED%86%A0%EB%A6%AC%EC%96%BC.gif?raw=true) ![newsapi](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/02gif/%EB%A9%94%EC%9D%B8%20%EC%B5%9C%EC%8B%A0.gif?raw=true)
+![벤치마킹](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/02gif/%EB%A9%94%EC%9D%B8%20%EC%B5%9C%EC%8B%A0.gif?raw=true) ![newsapi](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/02gif/%EB%A9%94%EC%9D%B8%20%EC%B5%9C%EC%8B%A0.gif?raw=true)
 <br/>
 
 **SwiftUI 공식 튜토리얼 + NewsAPI**
@@ -233,6 +233,57 @@ ScrollView(.horizontal, showsIndicators: false) {
 <br/>
 
 [RecommendRow 코드 보기](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/newsAPIToy02/01newsAPIToyApp%20/newsAPIToyApp/Views/Recommend/RecommendRow.swift)
+
+</details>
+
+<details>
+<summary>추천 News</summary>
+
+랜덤 API가 없어 임의로 배열들을 만들어줌
+<br/>
+
+```swift
+// in NewsMainViewModel.swift
+// 추천 검색어 api는 일단 random으로 대체
+let radomArr1 = ["Bitcoin", "MMA", "Meta", "LOL"]
+let radomArr2 = ["shinkai makoto", "across the spider verse", "oldboy", "spiderman"]
+let radomArr3 = ["Kpop BTS", "Kpop SM", "Aespa", "KPop"] // entertainment
+let radomArr4 = ["Nike", "adidas", "Puma", "asics"]
+```
+
+<br/>
+
+뷰모델에서 메인 뷰에 게시할 데이터를 가져올 때 뉴스 기사의 키워드를 랜덤으로 가져옴
+<br/>
+
+```swift
+// in NewsMainViewModel.swift
+
+// MARK: - fetchPostRecommend
+func fetchPostRecommend(series: Int) async throws {
+    if series == 1 { // 번호에 따라 키워드 변경
+        query = radomArr1.randomElement()! // 랜덤으로 넣어줌
+        print("\(query)")
+    } else if series == 2 {
+        query = radomArr2.randomElement()!
+        print("\(query)")
+    } else if series == 3 {
+        query = radomArr3.randomElement()!
+        print("\(query)")
+    } else {
+        query = radomArr4.randomElement()!
+        print("\(query)")
+    }
+
+    // 생략
+    // ...
+    // ...
+```
+
+<br/>
+
+[NewsMainViewModel.swift 코드 보기](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/newsAPIToy02/01newsAPIToyApp%20/newsAPIToyApp/ViewModels/NewsMainViewModel.swift)
+<br/>
 
 </details>
 
