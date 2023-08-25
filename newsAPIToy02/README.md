@@ -1,6 +1,6 @@
 # newsAPIToy02
 
-![벤치마킹](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/02gif/%EB%A9%94%EC%9D%B8%20%EC%B5%9C%EC%8B%A0.gif?raw=true) ![newsapi](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/02gif/%EB%A9%94%EC%9D%B8%20%EC%B5%9C%EC%8B%A0.gif?raw=true)
+![벤치마킹](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/gif/%EA%B3%B5%EC%8B%9D%ED%8A%9C%ED%86%A0%EB%A6%AC%EC%96%BC.gif?raw=true) ![newsapi](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/02gif/%EB%A9%94%EC%9D%B8%20%EC%B5%9C%EC%8B%A0.gif?raw=true)
 <br/>
 
 **SwiftUI 공식 튜토리얼 + NewsAPI**
