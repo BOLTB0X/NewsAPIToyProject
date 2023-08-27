@@ -23,6 +23,9 @@
 combine를 사용하지 않고 비동기 프로그래밍을 하도록 지향
 <br/>
 
+[URL구성 관련 커스텀 "NetworkManager"](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/newsAPIToy02/01newsAPIToyApp%20/newsAPIToyApp/Models/NetworkManager.swift)
+<br/>
+
 ### newsAPIToy01
 
 - [무한 스크롤 참고 블로그](https://codekodo.tistory.com/207)을 참고 하며 뉴스 헤드라인을 API 호출과 무한 스크롤
