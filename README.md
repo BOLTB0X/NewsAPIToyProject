@@ -1,4 +1,4 @@
-# NewsAPI ToyProject
+# 뉴스 앱(NewsAPI ToyProject)
 
 ![벤치마킹](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/gif/%EA%B3%B5%EC%8B%9D%ED%8A%9C%ED%86%A0%EB%A6%AC%EC%96%BC.gif?raw=true) ![메인2](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/02gif/%EB%A9%94%EC%9D%B83.gif?raw=true)
 <br/>
