@@ -1,14 +1,16 @@
-# newsAPIToy02
+# News REST API 활용 Toy Project
 
-![벤치마킹](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/gif/%EA%B3%B5%EC%8B%9D%ED%8A%9C%ED%86%A0%EB%A6%AC%EC%96%BC.gif?raw=true) ![newsapi](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/02gif/%EB%A9%94%EC%9D%B8%20%EC%B5%9C%EC%8B%A0.gif?raw=true)
-<br/>
+| SwiftUI Tutorial                                                                                                                                    | News                                                                                                   |
+| --------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| ![SwiftUI Tutorial](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/gif/%EA%B3%B5%EC%8B%9D%ED%8A%9C%ED%86%A0%EB%A6%AC%EC%96%BC.gif?raw=true) | ![News](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/02gif/%EB%A9%94%EC%9D%B83.gif?raw=true) |
 
 **SwiftUI 공식 튜토리얼 + NewsAPI**
-<br/>
 
 ## 0.Launch Screen
 
-![첫](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/02gif/%EC%95%B1%20%EB%9F%B0%EC%B9%98%EC%8A%A4%ED%81%AC%EB%A6%B0.gif?raw=true)
+| 첫 진입                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------ |
+| ![첫](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/02gif/%EC%95%B1%20%EB%9F%B0%EC%B9%98%EC%8A%A4%ED%81%AC%EB%A6%B0.gif?raw=true) |
 
 <br/>
 
@@ -39,10 +41,7 @@ struct CnimationCircle: View {
 }
 ```
 
-<br/>
-
-CnimationCircle 으로 이미지 테두리에 선이 퍼저나가는 애니메이션 효과를 적용한 코드
-<br/>
+`CnimationCircle` 으로 이미지 테두리에 선이 퍼저나가는 애니메이션 효과를 적용한 코드
 
 ```swift
    .overlay(
@@ -57,17 +56,13 @@ CnimationCircle 으로 이미지 테두리에 선이 퍼저나가는 애니메�
       }
 ```
 
-**animationAmount가 1이면 불트명이 1이고, 2이면 불투명도가 0**
-<br/>
+**`animationAmount`가 1이면 불트명이 1이고, 2이면 불투명도가 0**
 
-animationAmount 프로퍼티를 통해서 퍼져나가는 테두리 선의 투명도를 표현
-<br/>
+- `animationAmount` 프로퍼티를 통해서 퍼져나가는 테두리 선의 투명도를 표현
 
-Animation 효과를 repeatForver 로 지정을 통해 계속 반복 시킴
-<br/>
+- Animation 효과를 `repeatForver` 로 지정을 통해 계속 반복 시킴
 
-[코드 출처](https://seons-dev.tistory.com/39)
-<br/>
+[참고 - 코드 출처](https://seons-dev.tistory.com/39)
 
 </details>
 
@@ -95,37 +90,37 @@ struct ContentView: View {
 }
 ```
 
-<br/>
+- 이제 앱이 첫 로딩이 될 때 **DispatchQueue.main.asyncAfter**을 통해서 3초 정도 지연 시킴
 
-이제 앱이 첫 로딩이 될 때 **DispatchQueue.main.asyncAfter**을 통해서 3초 정도 지연 시킴
-<br/>
-
-if-else 구문으로 나타낼 뷰를 구분 시킴
-<br/>
+- if-else 구문으로 나타낼 뷰를 구분 시킴
 
 [ContentView 코드 보기](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/newsAPIToy02/01newsAPIToyApp%20/newsAPIToyApp/Views/ContentView.swift)
-<br/>
 
 </details>
 
 ## 1. Main
 
-![메인1](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/02gif/%EB%A9%94%EC%9D%B81.gif?raw=true) ![메인2](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/02gif/%EB%A9%94%EC%9D%B83.gif?raw=true)
+| Main 1                                                                                                  | Main 2                                                                                                  |
+| ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| ![메인1](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/02gif/%EB%A9%94%EC%9D%B81.gif?raw=true) | ![메인2](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/02gif/%EB%A9%94%EC%9D%B83.gif?raw=true) |
+
 <br/>
 
 <details><summary>배너</summary>
 
 수평 방향으르 스크롤 뷰 구성
-<br/>
 
 ```swift
 // in Banner.swift
 struct Banner: View {
    /* 생략 */
+   // ...
 
    var body: some View {
       VStack(alignment: .leading, spacing: 0) {
          /* 생략 */
+         // ....
+
          /* 베너부분 */
          /* 옆으로 스크롤 뷰 */
          ScrollView(.horizontal, showsIndicators: false) {
@@ -163,6 +158,7 @@ struct Banner: View {
                UIScrollView.appearance().isPagingEnabled = false
             }
             /* 생략 */
+            // ...
       }
    }
 }
@@ -172,7 +168,8 @@ struct Banner: View {
 
 ```swift
 private let timer = Timer.publish(every: 2, on: .main, in: .common).autoconnect() /* 타이머 */
-/* 생략 */
+
+// ...
 
 .onReceive(timer) { _ in
    withAnimation {
@@ -181,17 +178,13 @@ private let timer = Timer.publish(every: 2, on: .main, in: .common).autoconnect(
 }
 ```
 
-<br/>
+- 타이머 프로퍼티를 통해서 2초의 시간을 잼
 
-타이머 프로퍼티를 통해서 2초의 시간을 잼
-<br/>
-
-withAnimation을 이용하여 2초마다 배너의 이미지를 넘겨줌
-<br/>
+- `withAnimation` 을 이용하여 2초마다 배너의 이미지를 넘겨줌
+  <br/>
 
 [Banner 코드 보기](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/newsAPIToy02/01newsAPIToyApp%20/newsAPIToyApp/Views/NewsMain/Banner.swift)
 
-<br/>
 </details>
 
 <details><summary>가로 카테고리 스크롤</summary>
@@ -218,19 +211,13 @@ ScrollView(.horizontal, showsIndicators: false) {
    }
 ```
 
-<br/>
+- **ScrollView(.horizontal, showsIndicators: false)** 으로 설정 후 `HStack`
 
-**ScrollView(.horizontal, showsIndicators: false)** 으로 설정 후 HStack
-<br/>
-
-**UIScrollView isPagingEnabled** 을 이용
-<br/>
+- **UIScrollView isPagingEnabled** 을 이용
 
 [참고 원본 소스코드](https://code-algo.tistory.com/14)
-<br/>
 
 뉴스기사 이미지를 클릭 시 해당 뉴스 기사 관련 상세 정보가 나타나는 뷰로 이동
-<br/>
 
 [RecommendRow 코드 보기](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/newsAPIToy02/01newsAPIToyApp%20/newsAPIToyApp/Views/Recommend/RecommendRow.swift)
 
@@ -240,7 +227,6 @@ ScrollView(.horizontal, showsIndicators: false) {
 <summary>추천 News</summary>
 
 랜덤 API가 없어 임의로 배열들을 만들어줌
-<br/>
 
 ```swift
 // in NewsMainViewModel.swift
@@ -251,10 +237,7 @@ let radomArr3 = ["Kpop BTS", "Kpop SM", "Aespa", "KPop"] // entertainment
 let radomArr4 = ["Nike", "adidas", "Puma", "asics"]
 ```
 
-<br/>
-
 뷰모델에서 메인 뷰에 게시할 데이터를 가져올 때 뉴스 기사의 키워드를 랜덤으로 가져옴
-<br/>
 
 ```swift
 // in NewsMainViewModel.swift
@@ -280,22 +263,19 @@ func fetchPostRecommend(series: Int) async throws {
     // ...
 ```
 
-<br/>
-
 [NewsMainViewModel.swift 코드 보기](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/newsAPIToy02/01newsAPIToyApp%20/newsAPIToyApp/ViewModels/NewsMainViewModel.swift)
-<br/>
 
 </details>
 
 ## 2. BookMark
 
-![북마크](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/02gif/%EB%B6%81%EB%A7%88%ED%81%AC.gif?raw=true) ![북마크2](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/02gif/%EB%B6%81%EB%A7%88%ED%81%AC2.gif?raw=true)
-<br/>
+| 북마크 1                                                                                                         | 북마크 2                                                                                                           |
+| ---------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| ![북마크](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/02gif/%EB%B6%81%EB%A7%88%ED%81%AC.gif?raw=true) | ![북마크2](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/02gif/%EB%B6%81%EB%A7%88%ED%81%AC2.gif?raw=true) |
 
 <details><summary>코어 데이터</summary>
 
 코어 데이터 적용
-<br/>
 
 ```swift
 // in CoreDataManager.swift
@@ -326,6 +306,7 @@ class CoreDataManager {
     }()
 
     // 생략
+    // ...
 
     // MARK: - saveFavorite
     func saveFavorite(title: String, url: String, description: String?, author: String?, urlimg: String?, publi: String?, conten: String?) {
@@ -372,15 +353,9 @@ class CoreDataManager {
 ```
 
 **_무료 api로 진행하는 프로젝트의 문제점_**
-<br/>
 
-Core Data를 사용하여 북마크 데이터를 저장하더라도, API로부터 새로운 데이터를 가져오면 이전에 저장한 북마크 데이터가 업데이트되거나 초기화가 되어버림
-<br/>
-이는 API로부터 새로운 데이터를 받아올 때, 새로운 데이터로 기존 데이터를 업데이트하게 되는 것이 일반적이기 때문
-<br/>
-
-다른 방안을 모색 중
-<br/>
+- Core Data를 사용하여 북마크 데이터를 저장하더라도, API로부터 새로운 데이터를 가져오면 이전에 저장한 북마크 데이터가 업데이트되거나 초기화가 되어버림
+- 이는 API로부터 새로운 데이터를 받아올 때, 새로운 데이터로 기존 데이터를 업데이트하게 되는 것이 일반적이기 때문
 
 [CoreDataManager 코드 보기](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/newsAPIToy02/01newsAPIToyApp%20/newsAPIToyApp/Models/CoreData/CoreDataManager.swift)
 
@@ -389,7 +364,6 @@ Core Data를 사용하여 북마크 데이터를 저장하더라도, API로부�
 <details><summary>북마크 방식</summary>
 
 이 클래스를 활용하여 북마크 전용 클래스를 생성
-<br/>
 
 ```swift
 // in BookMarkManager
@@ -454,10 +428,7 @@ class BookMarkManager: ObservableObject {
 }
 ```
 
-<br/>
-
 앱 모든 뷰에 적용 되므로 **environmentObject** 로 적용
-<br/>
 
 ```swift
 @main
@@ -473,10 +444,7 @@ struct newsAPIToyAppApp: App {
 }
 ```
 
-<br/>
-
 뉴스 상세기사 화면에 버튼을 눌러 저장
-<br/>
 
 ```swift
 // in FavoriteButton.swift
@@ -505,26 +473,19 @@ struct FavoriteButton: View {
 }
 ```
 
-<br/>
-
 [BookMarkManager 코드 보기](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/newsAPIToy02/01newsAPIToyApp%20/newsAPIToyApp/Models/BookMarkManager.swift)
-<br/>
 
 [FavoriteButton 코드 보기](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/newsAPIToy02/01newsAPIToyApp%20/newsAPIToyApp/Views/SubView/FavoriteButton.swift)
-<br/>
 
 </details>
 
 <details><summary>북마크 셀</summary>
 
-북마크한 데이터를 나타내는 셀
-<br/>
+- 북마크한 데이터를 나타내는 셀
 
-데이터 로딩 중임을 나타내고 싶어 AsyncImage 이용
-<br/>
+- 데이터 로딩 중임을 나타내고 싶어 `AsyncImage` 이용
 
-텍스트는 redacted
-<br/>
+- 텍스트는 `redacted`
 
 ```swift
 struct BookMarkCell: View {
@@ -559,8 +520,6 @@ struct BookMarkCell: View {
 }
 ```
 
-<br/>
-
 ```swift
 // in BookMark.swift
 import SwiftUI
@@ -587,24 +546,21 @@ struct BookMark: View {
 }
 ```
 
-<br/>
-
 [BookMark 코드 보기](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/newsAPIToy02/01newsAPIToyApp%20/newsAPIToyApp/Views/BookMark/BookMark.swift)
 
 </details>
 
 ## 3. HeadLine
 
-![해드라인](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/02gif/%ED%97%A4%EB%93%9C%EB%9D%BC%EC%9D%B8.gif?raw=true) ![헤드라인2](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/02gif/%ED%97%A4%EB%93%9C%EB%9D%BC%EC%9D%B82.gif?raw=true)
-<br/>
+| 해드라인 1                                                                                                                  | 해드라인 2                                                                                                                    |
+| --------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| ![해드라인](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/02gif/%ED%97%A4%EB%93%9C%EB%9D%BC%EC%9D%B8.gif?raw=true) | ![헤드라인2](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/02gif/%ED%97%A4%EB%93%9C%EB%9D%BC%EC%9D%B82.gif?raw=true) |
 
 <details><summary>헤드라인 메인 뷰</summary>
 
-NavigationView와 리스트로 전체적인 UI 설계
-<br/>
+`NavigationView`와 리스트로 전체적인 UI 설계
 
 네비게이션 기능으로 이동 시 자동 생성되는 버튼 취소 및 기존 툴바 약간 수정
-<br/>
 
 ```swift
 // in HeadLine.swift
@@ -623,6 +579,8 @@ struct HeadLine: View {
         NavigationView { // navigationTitle 이용 및 뷰 구성을 위해
             List { // ForEach로 담겨진 뉴스기사 배열을 깔끔히 처리를 위해 List를 사용
                /* 생략 */
+               // ....
+
             }
             .listStyle(.grouped)
             .navigationTitle("News HeadLine")
@@ -640,12 +598,11 @@ struct HeadLine: View {
         // 초기 진입시 task로 비동기로 뷰에 나타낼 data를 불러오는 부분
         .task {
          // 생략
+         // ....
         }
     }
 }
 ```
-
-<br/>
 
 [HeadLine 코드 보기](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/newsAPIToy02/01newsAPIToyApp%20/newsAPIToyApp/Views/HeadLine/HeadLine.swift)
 
@@ -654,10 +611,8 @@ struct HeadLine: View {
 <details><summary>무한스크롤</summary>
 
 스크롤을 내리면 리스트 끝까지 내리면 추가적으로 데이터를 불러오는 것
-<br/>
 
 먼저 ViewModel에서 데이터를 가져옴
-<br/>
 
 ```swift
 // in HeadLineViewModel.swift
@@ -692,18 +647,13 @@ func fetchNewsHeadLine() async throws {
 }
 ```
 
-<br/>
-
 그런다음 headline 뷰에
 
 ```swift
 @StateObject var headlineVM = HeadLineViewModel()
 ```
 
-<br/>
-
-'StateObject' 프로퍼티를 선언하여 아래 리스트로 표현
-<br/>
+`StateObject` 프로퍼티를 선언하여 아래 리스트로 표현
 
 ```swift
 ForEach(headlineVM.items) { result in
@@ -727,7 +677,6 @@ ForEach(headlineVM.items) { result in
 ```
 
 리스트에 마지막에 도달하면 더 불러올지 말지를 판단후 메소드 호출
-<br/>
 
 ```swift
 // in HeadLineViewModel.swift
@@ -750,8 +699,6 @@ func loadMoreNewsHeadLine(currentItem: Article?) {
    }
 }
 ```
-
-<br/>
 
 [HeadLineViewModel 코드 보기](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/newsAPIToy02/01newsAPIToyApp%20/newsAPIToyApp/ViewModels/HeadLineViewModel.swift)
 
@@ -782,8 +729,7 @@ func loadMoreNewsHeadLine(currentItem: Article?) {
 }
 ```
 
-AsyncImage 이용, 이미지를 로딩 중일 때는 redacted 이용
-<br/>
+`AsyncImage` 이용, 이미지를 로딩 중일 때는 `redacted` 이용
 
 [HeadLineCell 보기](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/newsAPIToy02/01newsAPIToyApp%20/newsAPIToyApp/Views/HeadLine/HeadLineCell.swift)
 
@@ -791,22 +737,21 @@ AsyncImage 이용, 이미지를 로딩 중일 때는 redacted 이용
 
 ## 4. Search
 
-![검색1](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/02gif/%EA%B2%80%EC%83%89.gif?raw=true) ![검색2](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/02gif/%EA%B2%80%EC%83%892.gif?raw=true)
-<br/>
+| 검색 뷰로 이동                                                                                         | 검색                                                                                                    |
+| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------- |
+| ![검색1](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/02gif/%EA%B2%80%EC%83%89.gif?raw=true) | ![검색2](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/02gif/%EA%B2%80%EC%83%892.gif?raw=true) |
 
-![검색 기능](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/02gif/%EA%B2%80%EC%83%89%20%EC%83%81%EC%84%B8.gif?raw=true) ![검색 필터링](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/02gif/%EA%B2%80%EC%83%89%20%ED%95%84%ED%84%B0%EB%A7%81.gif?raw=true)
-<br/>
+| 키워드 검색                                                                                                                     | 검색 필터링                                                                                                                                |
+| ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| ![검색 기능](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/02gif/%EA%B2%80%EC%83%89%20%EC%83%81%EC%84%B8.gif?raw=true) | ![검색 필터링](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/02gif/%EA%B2%80%EC%83%89%20%ED%95%84%ED%84%B0%EB%A7%81.gif?raw=true) |
 
 <details><summary>검색 View</summary>
 
-기본 @State, @Binding과 오픈 소스 이용하여 검색 bar 구현
-<br/>
+기본 `@State`, `@Binding` 과 오픈 소스 이용하여 검색 bar 구현
 
 [참고 코드 보기](https://www.appcoda.com/swiftui-search-bar/)
-<br/>
 
 검색 바에서 검색어를 입력받아 무한스크롤과 동일한 로직으로 데이터를 받아옴
-<br/>
 
 ```swift
 // in Search
@@ -845,17 +790,14 @@ struct SearchMain: View {
 ```
 
 [SearchBar 코드 보기](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/newsAPIToy02/01newsAPIToyApp%20/newsAPIToyApp/Views/Search/SearchBar.swift)
-<br/>
 
 [Search.swift 코드 보기](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/newsAPIToy02/01newsAPIToyApp%20/newsAPIToyApp/Views/Search/SearchMain.swift)
-<br/>
 
 </details>
 
 <details><summary>검색 필터링</summary>
 
-뷰모델에서 입력 받는 문자열을 lowercased와 trimmingCharacters으로 필터링
-<br/>
+뷰모델에서 입력 받는 문자열을 `lowercased`와 `trimmingCharacters`으로 필터링
 
 ```swift
 // in SearchViewModel.swift
@@ -879,13 +821,9 @@ class SearchViewModel: ObservableObject {
 
 ```
 
-<br/>
-
 [SearchViewModel.swift 코드 보기](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/newsAPIToy02/01newsAPIToyApp%20/newsAPIToyApp/ViewModels/SearchViewModel.swift)
-<br/>
 
 뷰에서 필터링된 검색관련 퍼블리싱한 배열을 리스트로 나타냄
-<br/>
 
 ```swift
 // in Search.swift
@@ -906,6 +844,5 @@ List(searchViewModel.filteredArticles, id: \.url) { article in
 ```
 
 [SearchMain.swift 코드 보기](https://github.com/BOLTB0X/NewsAPIToyProject/blob/main/newsAPIToy02/01newsAPIToyApp%20/newsAPIToyApp/Views/Search/SearchMain.swift)
-<br/>
 
 </details>
